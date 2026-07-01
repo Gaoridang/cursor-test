@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  if (!post) return { title: "Not Found" };
+  if (!post) return { title: "찾을 수 없음" };
   return {
     title: `${post.title} — essos`,
     description: post.excerpt,
@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       {related.length > 0 && (
         <section className={styles.related}>
-          <h2 className={styles.relatedTitle}>Related posts</h2>
+          <h2 className={styles.relatedTitle}>관련 글</h2>
           <div className={styles.relatedGrid}>
             {related.map((p) => (
               <PostCard key={p.slug} post={p} />

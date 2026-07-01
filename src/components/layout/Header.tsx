@@ -7,10 +7,10 @@ import { SearchModal } from "@/components/search/SearchModal";
 import styles from "./Header.module.css";
 
 const NAV_ITEMS = [
-  { label: "ABOUT", href: "/about" },
-  { label: "PRODUCTS", href: "/products" },
-  { label: "TESTIMONIAL", href: "/testimonial" },
-  { label: "BLOG", href: "/", active: true },
+  { label: "소개", href: "/about" },
+  { label: "제품", href: "/products" },
+  { label: "후기", href: "/testimonial" },
+  { label: "블로그", href: "/", active: true },
 ];
 
 export function Header() {
@@ -36,7 +36,7 @@ export function Header() {
             essos
           </Link>
 
-          <nav className={styles.nav} aria-label="Main">
+          <nav className={styles.nav} aria-label="주 메뉴">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.label}
@@ -53,7 +53,7 @@ export function Header() {
               type="button"
               className={styles.searchBtn}
               onClick={() => setSearchOpen(true)}
-              aria-label="Search posts"
+              aria-label="글 검색"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="8" />
@@ -63,21 +63,21 @@ export function Header() {
             </button>
 
             <a href="#" className={styles.login}>
-              LOGIN
+              로그인
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
             </a>
 
             <Button variant="primary" href="#">
-              GET STARTED
+              시작하기
             </Button>
 
             <button
               type="button"
               className={styles.menuBtn}
               onClick={() => setMobileOpen((o) => !o)}
-              aria-label="Toggle menu"
+              aria-label="메뉴 열기"
               aria-expanded={mobileOpen}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -89,7 +89,7 @@ export function Header() {
 
         <nav
           className={`${styles.mobileNav} ${mobileOpen ? styles.mobileNavOpen : ""}`}
-          aria-label="Mobile"
+          aria-label="모바일 메뉴"
         >
           {NAV_ITEMS.map((item) => (
             <Link

@@ -1,19 +1,19 @@
 ---
-title: "Our people make the difference"
+title: "우리 사람들이 차이를 만듭니다"
 slug: our-people-make-the-difference
 date: 2024-08-07
-category: Founders
+category: 창업자
 image: /images/placeholder.svg
-excerpt: "Behind every great product is a team that cares deeply about the problem they're solving."
-tags: [culture, founders]
+excerpt: "훌륭한 제품 뒤에는 해결하는 문제에 깊이 관심을 갖는 팀이 있습니다."
+tags: [문화, 창업자]
 ---
 
-Building a company is a team sport. We've learned that hiring for curiosity and empathy beats hiring for credentials alone.
+회사를 만드는 것은 팀 스포츠입니다. 호기심과 공감 능력으로 채용하는 것이 학력만으로 채용하는 것보다 낫다는 것을 배웠습니다.
 
-## Culture as a product
+## 제품처럼 다루는 문화
 
-We treat internal culture with the same rigor we apply to our product roadmap. Regular retrospectives, transparent communication, and room to experiment keep us sharp.
+내부 문화를 제품 로드맵에 적용하는 것과 같은 엄격함으로 대합니다. 정기적인 회고, 투명한 소통, 실험할 여유가 우리를 날카롭게 유지합니다.
 
-## Learning in public
+## 공개적으로 배우기
 
-Sharing what we learn—successes and failures—helps the broader community and attracts people who think the same way.
+배우는 것을 공유하는 것—성공과 실패 모두—은 더 넓은 커뮤니티에 도움이 되고 같은 생각을 하는 사람들을 끌어들입니다.

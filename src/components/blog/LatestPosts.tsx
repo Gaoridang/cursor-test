@@ -32,7 +32,7 @@ export function PostListItem({
   );
 }
 
-export function LatestPosts({ posts, title = "Latest post" }: { posts: Post[]; title?: string }) {
+export function LatestPosts({ posts, title = "최신 글" }: { posts: Post[]; title?: string }) {
   return (
     <section className={styles.section}>
       <h2 className={styles.title}>{title}</h2>

@@ -1,15 +1,13 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import stopWords from "../src/lib/search/stop-words.json" with { type: "json" };
+import { tokenize } from "../src/lib/search/tokenizer.shared.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 const postsDir = path.join(root, "content", "posts");
 const outDir = path.join(root, "public", "search");
 const outFile = path.join(outDir, "index.json");
-
-const STOP_WORDS = new Set(stopWords);
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
@@ -35,14 +33,6 @@ function parseFrontmatter(raw) {
 
 function stripMarkdown(md) {
   return md.replace(/```[\s\S]*?```/g, " ").replace(/[#*_>\[\]()!`-]/g, " ").replace(/\s+/g, " ").trim();
-}
-
-function tokenize(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}\s]/gu, " ")
-    .split(/\s+/)
-    .filter((t) => t.length > 1 && !STOP_WORDS.has(t));
 }
 
 function getIndexFields(doc) {

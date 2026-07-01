@@ -11,13 +11,13 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "essos — Blog",
-  description: "Enhancing team collaboration with thoughtful writing.",
+  title: "essos — 블로그",
+  description: "팀 협업과 제품에 관한 글을 나눕니다.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={inter.variable}>
         <Header />
         <main>{children}</main>

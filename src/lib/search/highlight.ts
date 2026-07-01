@@ -1,23 +1,28 @@
-import { resolveTerm, tokenize } from "./tokenizer";
-import { getVocabulary } from "./inverted-index";
 import type { InvertedIndex } from "@/lib/types";
+import { getVocabulary } from "./inverted-index";
+import { isHangulToken, resolveTerm, tokenize } from "./tokenizer";
 
 export function highlightText(text: string, query: string, index?: InvertedIndex | null): string {
   const tokens = tokenize(query);
   if (!tokens.length) return text;
 
   const vocabulary = index ? getVocabulary(index) : tokens;
-  let result = text;
+  const highlights = new Set<string>();
 
   for (const token of tokens) {
-    const resolved = index ? (resolveTerm(token, vocabulary) ?? token) : token;
-    const regex = new RegExp(`(${escapeRegex(resolved)})`, "gi");
-    result = result.replace(regex, "<mark>$1</mark>");
+    highlights.add(token);
+    const resolved = index ? resolveTerm(token, vocabulary) : null;
+    if (resolved) highlights.add(resolved);
+  }
 
-    if (resolved !== token) {
-      const queryRegex = new RegExp(`(${escapeRegex(token)})`, "gi");
-      result = result.replace(queryRegex, "<mark>$1</mark>");
-    }
+  let result = text;
+  const sorted = [...highlights].sort((a, b) => b.length - a.length);
+
+  for (const term of sorted) {
+    if (term.length < 2) continue;
+    const pattern = isHangulToken(term) ? term : `(?<![\\p{L}\\p{N}])${escapeRegex(term)}(?![\\p{L}\\p{N}])`;
+    const regex = new RegExp(`(${pattern})`, "giu");
+    result = result.replace(regex, "<mark>$1</mark>");
   }
 
   return result;

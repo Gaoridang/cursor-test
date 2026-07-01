@@ -15,14 +15,14 @@ export function FoundersCorner({ posts }: { posts: Post[] }) {
   return (
     <section className={styles.section}>
       <div className={styles.header}>
-        <h2 className={styles.title}>Founders corner</h2>
+        <h2 className={styles.title}>창업자 코너</h2>
         <div className={styles.arrows}>
           <button
             type="button"
             className={styles.arrow}
             onClick={() => setOffset((o) => Math.max(0, o - 1))}
             disabled={offset === 0}
-            aria-label="Previous posts"
+            aria-label="이전 글"
           >
             ◀
           </button>
@@ -31,7 +31,7 @@ export function FoundersCorner({ posts }: { posts: Post[] }) {
             className={styles.arrow}
             onClick={() => setOffset((o) => Math.min(maxOffset, o + 1))}
             disabled={offset >= maxOffset}
-            aria-label="Next posts"
+            aria-label="다음 글"
           >
             ▶
           </button>
