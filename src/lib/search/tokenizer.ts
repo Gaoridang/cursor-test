@@ -15,5 +15,9 @@ export const findFuzzyTerm = findFuzzyTermImpl as (
   vocabulary: string[],
   maxDistance?: number
 ) => string | null;
-export const resolveTerm = resolveTermImpl as (queryToken: string, vocabulary: string[]) => string | null;
+export const resolveTerm = resolveTermImpl as (
+  queryToken: string,
+  vocabulary: string[],
+  options?: { allowFuzzy?: boolean; allowPrefix?: boolean }
+) => string | null;
 export { isHangulToken, isLatinToken } from "./tokenizer.shared.mjs";
