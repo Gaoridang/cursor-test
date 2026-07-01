@@ -13,20 +13,24 @@ export default function HomePage() {
 
   if (!featured) {
     return (
-      <div className="container" style={{ padding: "64px 24px", textAlign: "center" }}>
+      <div className={`container ${styles.empty}`}>
         <p>아직 글이 없습니다. content/posts/ 에 마크다운 파일을 추가하세요.</p>
       </div>
     );
   }
 
   return (
-    <div className="container">
-      <section className={styles.hero}>
-        <FeaturedPost post={featured} />
-        <LatestPosts posts={latest} />
-      </section>
+    <>
+      <div className="container">
+        <section className={styles.hero} aria-label="추천 글">
+          <FeaturedPost post={featured} />
+          <LatestPosts posts={latest} />
+        </section>
+      </div>
       <FoundersCorner posts={founders} />
-      <Pagination />
-    </div>
+      <div className="container">
+        <Pagination />
+      </div>
+    </>
   );
 }

@@ -4,6 +4,12 @@
   border-radius: var(--radius-card);
   overflow: hidden;
   aspect-ratio: 16 / 9;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .imageWrap {
@@ -27,8 +33,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 32px;
-  background: linear-gradient(transparent, var(--color-glass));
+  padding: var(--space-8);
+  background: linear-gradient(transparent 0%, rgba(250, 248, 245, 0.6) 40%, var(--color-glass) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -36,13 +42,14 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .title {
-  font-size: clamp(24px, 3vw, 36px);
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

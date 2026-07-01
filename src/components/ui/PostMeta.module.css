@@ -1,0 +1,5 @@
+.meta {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-normal);
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { PostLabels } from "@/components/ui/PostLabels";
@@ -40,8 +42,13 @@ export function PostListItem({
 
 export function LatestPosts({ posts, title = "최신 글" }: { posts: Post[]; title?: string }) {
   return (
-    <section className={styles.section}>
-      <h2 className={styles.title}>{title}</h2>
+    <section className={styles.section} aria-labelledby="latest-posts-heading">
+      <div className={styles.heading}>
+        <span className={styles.label}>블로그</span>
+        <h2 id="latest-posts-heading" className={styles.title}>
+          {title}
+        </h2>
+      </div>
       <div className={styles.list}>
         {posts.map((post) => (
           <PostListItem key={post.slug} post={post} />
