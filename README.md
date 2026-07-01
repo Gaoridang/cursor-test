@@ -64,6 +64,26 @@ npx expo run:ios
 | `npm run start:tunnel` | Dev server with tunnel (works across networks) |
 | `npm run web` | Run in the browser (quick local check) |
 | `npm run typecheck` | TypeScript check |
+| `npm run build:ios:testflight` | Build iOS app and submit to TestFlight (EAS) |
+| `npm run build:ios` | Build iOS production `.ipa` only |
+| `npm run submit:ios` | Submit latest iOS build to TestFlight |
+
+## TestFlight 배포 (iPhone에 앱 설치)
+
+Expo Go 없이 **독립 앱**으로 iPhone에 설치하려면 TestFlight를 사용합니다. Mac 없이 **EAS Build**로 빌드할 수 있습니다.
+
+**필요:** Apple Developer Program ($99/년), Expo 계정, App Store Connect 앱 등록
+
+```bash
+npm install
+npx eas login
+npm run eas:init
+npm run build:ios:testflight
+```
+
+빌드 처리 후 iPhone **TestFlight** 앱에서 설치합니다.
+
+자세한 단계별 가이드: **[docs/TESTFLIGHT.ko.md](./docs/TESTFLIGHT.ko.md)**
 
 ## Project structure
 

@@ -26,6 +26,14 @@ Native iOS builds (`npx expo prebuild`, `npx expo run:ios --device`) require **m
 - Bundle ID: `com.gaoridang.cursortest` (in `app.json`)
 - Generated `/ios` and `/android` folders are gitignored; use `npx expo prebuild` locally when native projects are needed.
 
+### TestFlight (EAS)
+
+TestFlight 배포는 사용자 Apple/Expo 계정으로 로컬 또는 CI에서 실행. 이 Linux VM에서는 `eas build`/`eas submit`을 대신 실행할 수 없음 (인증 필요).
+
+- Config: `eas.json` (production profile + auto-submit)
+- User guide: `docs/TESTFLIGHT.ko.md`
+- Commands: `npm run build:ios:testflight`, `npm run submit:ios`
+
 ### Expo docs
 
 Read versioned docs at https://docs.expo.dev/versions/v57.0.0/ before changing Expo APIs.
