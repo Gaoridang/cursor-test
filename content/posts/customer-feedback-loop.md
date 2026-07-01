@@ -1,23 +1,23 @@
 ---
-title: "Building a Customer Feedback Loop That Actually Works"
+title: "실제로 작동하는 고객 피드백 루프 만들기"
 slug: customer-feedback-loop
 date: 2024-08-01
-category: Product
+category: 제품
 image: /images/placeholder.svg
-excerpt: "Turn user feedback into product decisions with a structured, repeatable process."
-tags: [product, feedback, customers]
+excerpt: "구조화되고 반복 가능한 프로세스로 사용자 피드백을 제품 결정으로 전환하세요."
+tags: [제품, 피드백, 고객]
 ---
 
-Feedback is only valuable when it changes what you build. Here's how we close the loop.
+피드백은 여러분이 만드는 것을 바꿀 때만 가치가 있습니다. 우리가 루프를 닫는 방법은 다음과 같습니다.
 
-## Collect with intent
+## 의도를 갖고 수집하라
 
-Surveys, support tickets, and sales calls all contain signal. Tag and centralize feedback so patterns emerge.
+설문, 지원 티켓, 영업 통화 모두 신호를 담고 있습니다. 피드백에 태그를 달고 중앙화하면 패턴이 드러납니다.
 
-## Prioritize ruthlessly
+## 과감하게 우선순위를 정하라
 
-Not every request deserves a sprint. Use impact and effort to rank ideas, then say no clearly.
+모든 요청이 스프린트를 받을 자격은 없습니다. 영향과 노력으로 아이디어를 순위 매기고, 명확하게 거절하세요.
 
-## Close the loop publicly
+## 공개적으로 루프를 닫아라
 
-When you ship something users asked for, tell them. It builds loyalty and encourages more honest input.
+사용자가 요청한 것을 출시하면 알려주세요. 충성도를 쌓고 더 솔직한 의견을 이끌어냅니다.

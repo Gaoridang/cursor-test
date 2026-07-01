@@ -1,87 +1,90 @@
-# essos Blog
+# essos 블로그
 
-A personal blog with essos-inspired design, client-side BM25 keyword search, and Grok Collections semantic search.
+essos 스타일 디자인의 개인 블로그입니다. 클라이언트 BM25 키워드 검색과 Grok Collections 시맨틱 검색을 지원합니다.
 
-## Stack
+## 기술 스택
 
 - **Next.js 15** + TypeScript + CSS Modules
-- **Content:** Markdown in `content/posts/`
-- **Keyword search:** Self-hosted BM25 inverted index (build-time)
-- **Semantic search:** [xAI Collections API](https://docs.x.ai/developers/files/collections) (hybrid)
+- **콘텐츠:** `content/posts/` 마크다운
+- **키워드 검색:** 자체 호스팅 BM25 역색인 (빌드 시 생성)
+- **시맨틱 검색:** [xAI Collections API](https://docs.x.ai/developers/files/collections) (하이브리드)
 
-## Getting Started
+## 시작하기
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+[http://localhost:3000](http://localhost:3000) 에서 확인하세요.
 
-## Search
+## 검색
 
-### Keyword (works offline)
+### 키워드 (오프라인 동작)
 
-Build the index:
+인덱스 빌드:
 
 ```bash
 node scripts/build-search-index.mjs
 ```
 
-Index is written to `public/search/index.json` and loaded client-side.
+인덱스는 `public/search/index.json`에 저장되며 클라이언트에서 로드됩니다.
 
-### Semantic (Grok Collections)
+한국어 검색은 어절 단위 토큰화와 바이그램(2-gram) 색인을 사용합니다.
 
-1. Copy `.env.example` to `.env.local`
-2. Create a Collection in the [xAI Console](https://console.x.ai)
-3. Set `XAI_API_KEY`, `XAI_MANAGEMENT_API_KEY`, `XAI_COLLECTION_ID`
-4. Sync posts:
+### 시맨틱 (Grok Collections)
+
+1. `.env.example`을 `.env.local`로 복사
+2. [xAI Console](https://console.x.ai)에서 Collection 생성
+3. `XAI_API_KEY`, `XAI_MANAGEMENT_API_KEY`, `XAI_COLLECTION_ID` 설정
+4. 글 동기화:
 
 ```bash
 npm run sync:collections
 ```
 
-Search modal tabs:
+검색 모달 탭:
 
-- **Keyword** — instant BM25
-- **Semantic** — Grok Collections `semantic` mode
-- **All** — BM25 + Grok `hybrid` merged
+- **전체** — BM25 + Grok `hybrid` 병합
+- **키워드** — 즉시 BM25 (한국어 기반)
+- **시맨틱** — Grok Collections `semantic` 모드
 
-Press `Cmd+K` (or `Ctrl+K`) to open search.
+`Cmd+K` (또는 `Ctrl+K`)로 검색을 엽니다.
 
-## Deploy to Vercel
+## Vercel 배포
 
-**Works without env vars** — Keyword search only until you add xAI keys.
+**env 없이도 동작** — xAI 키를 추가하기 전까지는 키워드 검색만 사용됩니다.
 
-1. Connect this repo on [vercel.com](https://vercel.com)
-2. Deploy ( `vercel.json` configures the build )
-3. Later: add `XAI_API_KEY`, `XAI_MANAGEMENT_API_KEY`, `XAI_COLLECTION_ID`, `NEXT_PUBLIC_SITE_URL` in Vercel → Settings → Environment Variables → Redeploy
+1. [vercel.com](https://vercel.com)에서 이 레포 연결
+2. 배포 (`vercel.json`이 빌드를 설정)
+3. 이후: Vercel → Settings → Environment Variables에 `XAI_API_KEY`, `XAI_MANAGEMENT_API_KEY`, `XAI_COLLECTION_ID`, `NEXT_PUBLIC_SITE_URL` 추가 → 재배포
 
-See [docs/VERCEL.md](docs/VERCEL.md) for the full checklist (Korean).
+자세한 내용은 [docs/VERCEL.md](docs/VERCEL.md)를 참고하세요.
 
-## Adding Posts
+## 글 추가하기
 
-Create a file in `content/posts/`:
+`content/posts/`에 파일을 만듭니다:
 
 ```markdown
 ---
-title: "My Post"
+title: "내 글 제목"
 slug: my-post
 date: 2024-08-10
-category: General
+category: 일반
 image: /images/placeholder.svg
-excerpt: "Short description"
+excerpt: "짧은 설명"
+tags: [태그1, 태그2]
 ---
 
-Your content here...
+본문 내용...
 ```
 
-Then rebuild the index and sync collections.
+그다음 인덱스를 재빌드하고 컬렉션을 동기화하세요.
 
-## Scripts
+## 스크립트
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start dev server |
-| `npm run build` | Build index + production build |
-| `npm run sync:collections` | Upload posts to xAI Collection |
+| 명령어 | 설명 |
+|--------|------|
+| `npm run dev` | 개발 서버 시작 |
+| `npm run build` | 인덱스 빌드 + 프로덕션 빌드 |
+| `npm run sync:collections` | xAI Collection에 글 업로드 |

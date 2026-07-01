@@ -11,8 +11,8 @@ export function Pagination({ current = 1, total = 5 }: PaginationProps) {
   const pages = Array.from({ length: total }, (_, i) => i + 1);
 
   return (
-    <nav className={styles.pagination} aria-label="Pagination">
-      <button type="button" className={styles.arrow} disabled={current === 1} aria-label="Previous page">
+    <nav className={styles.pagination} aria-label="페이지">
+      <button type="button" className={styles.arrow} disabled={current === 1} aria-label="이전 페이지">
         ◀
       </button>
       {pages.map((page) => (
@@ -25,7 +25,7 @@ export function Pagination({ current = 1, total = 5 }: PaginationProps) {
           {page}
         </button>
       ))}
-      <button type="button" className={styles.arrow} disabled={current === total} aria-label="Next page">
+      <button type="button" className={styles.arrow} disabled={current === total} aria-label="다음 페이지">
         ▶
       </button>
     </nav>

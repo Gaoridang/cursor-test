@@ -1,23 +1,23 @@
 ---
-title: "The Future of Remote Work: Tools and Mindsets"
+title: "원격 근무의 미래: 도구와 마인드셋"
 slug: future-of-remote-work
 date: 2024-08-03
-category: Category
+category: 카테고리
 image: /images/placeholder.svg
-excerpt: "How async communication and intentional tooling shape distributed teams."
-tags: [remote, productivity]
+excerpt: "비동기 커뮤니케이션과 의도적인 도구가 분산 팀을 어떻게 형성하는지."
+tags: [원격, 생산성]
 ---
 
-Remote work isn't just video calls from home—it's a different operating system for teams.
+원격 근무는 집에서 하는 화상 통화만이 아닙니다—팀을 위한 다른 운영 체제입니다.
 
-## Async by default
+## 기본은 비동기
 
-Not every question needs an immediate answer. Document decisions, use threads, and respect focus time.
+모든 질문에 즉각적인 답이 필요한 것은 아닙니다. 결정을 문서화하고, 스레드를 사용하고, 집중 시간을 존중하세요.
 
-## Overcommunicate context
+## 맥락을 과하게 전달하라
 
-When you can't tap someone on the shoulder, written context becomes your superpower. Invest in docs and searchable knowledge bases.
+옆 사람을 톡 칠 수 없을 때, 서면 맥락이 슈퍼파워가 됩니다. 문서와 검색 가능한 지식 베이스에 투자하세요.
 
-## Trust the output
+## 결과를 신뢰하라
 
-Measure results, not hours online. The best remote teams optimize for outcomes and autonomy.
+온라인 시간이 아니라 결과를 측정하세요. 최고의 원격 팀은 성과와 자율성을 최적화합니다.

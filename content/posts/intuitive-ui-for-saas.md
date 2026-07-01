@@ -1,27 +1,27 @@
 ---
-title: "Creating an Intuitive User Interface (UI) for Your SaaS Product"
+title: "SaaS 제품을 위한 직관적인 사용자 인터페이스(UI) 만들기"
 slug: intuitive-ui-for-saas
 date: 2024-08-08
-category: Design
+category: 디자인
 image: /images/placeholder.svg
-excerpt: "Principles for designing interfaces that users love from the first click."
-tags: [ui, design, saas]
+excerpt: "첫 클릭부터 사용자가 사랑하는 인터페이스를 설계하는 원칙."
+tags: [ui, 디자인, saas]
 ---
 
-A great UI doesn't shout—it guides. Users should understand what to do next without reading a manual.
+훌륭한 UI는 눈에 띄지 않고 안내합니다. 사용자는 매뉴얼을 읽지 않고도 다음에 무엇을 해야 할지 알 수 있어야 합니다.
 
-## Clarity over cleverness
+## 명확함이 영리함보다 앞선다
 
-Every screen should answer three questions: Where am I? What can I do? What happens next?
+모든 화면은 세 가지 질문에 답해야 합니다. 지금 어디에 있나? 무엇을 할 수 있나? 다음에 무슨 일이 일어나나?
 
-## Consistency builds trust
+## 일관성이 신뢰를 만든다
 
-Reuse patterns across your product. Buttons, forms, and navigation should behave predictably.
+제품 전반에 패턴을 재사용하세요. 버튼, 폼, 내비게이션은 예측 가능하게 동작해야 합니다.
 
-- Use a limited color palette
-- Stick to one type scale
-- Label actions with verbs users understand
+- 제한된 색상 팔레트를 사용하세요
+- 하나의 타이포 스케일을 유지하세요
+- 사용자가 이해하는 동사로 액션을 라벨링하세요
 
-## Test early, test often
+## 일찍, 자주 테스트하라
 
-Watch real users complete tasks. You'll find friction you never imagined.
+실제 사용자가 과제를 완료하는 모습을 지켜보세요. 상상도 못 했던 마찰 지점을 발견하게 될 것입니다.

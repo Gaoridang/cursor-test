@@ -10,6 +10,12 @@ import { highlightText } from "@/lib/search/highlight";
 import type { InvertedIndex, SearchMode, SearchResult } from "@/lib/types";
 import styles from "./SearchModal.module.css";
 
+const MODE_LABELS: Record<SearchMode, string> = {
+  all: "전체",
+  keyword: "키워드",
+  semantic: "시맨틱",
+};
+
 interface SearchModalProps {
   open: boolean;
   onClose: () => void;
@@ -34,7 +40,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
       fetch("/search/index.json")
         .then((r) => r.json())
         .then(setIndex)
-        .catch(() => setError("Failed to load search index"));
+        .catch(() => setError("검색 인덱스를 불러오지 못했습니다"));
     }
   }, [open, index]);
 
@@ -97,15 +103,15 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
             setResults(mergeSearchResults(bm25, grok));
           } catch {
             setResults(bm25);
-            setError("Semantic search unavailable — showing keyword results");
+            setError("시맨틱 검색을 사용할 수 없습니다 — 키워드 결과를 표시합니다");
           }
         }
       } catch {
         if (index) {
           setResults(searchBM25(q, index));
-          setError("Semantic search unavailable — showing keyword results");
+          setError("시맨틱 검색을 사용할 수 없습니다 — 키워드 결과를 표시합니다");
         } else {
-          setError("Search unavailable");
+          setError("검색을 사용할 수 없습니다");
         }
       } finally {
         setLoading(false);
@@ -136,7 +142,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
         className={styles.modal}
         role="dialog"
         aria-modal="true"
-        aria-label="Search posts"
+        aria-label="글 검색"
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.header}>
@@ -147,10 +153,10 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
           <input
             ref={inputRef}
             className={styles.input}
-            placeholder="Search posts..."
+            placeholder="글 검색..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            aria-label="Search query"
+            aria-label="검색어"
           />
           <span className={styles.esc}>ESC</span>
         </div>
@@ -165,16 +171,16 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
               className={`${styles.tab} ${mode === tab ? styles.tabActive : ""}`}
               onClick={() => setMode(tab)}
             >
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {MODE_LABELS[tab]}
             </button>
           ))}
         </div>
 
         <div className={styles.results}>
-          {loading && <div className={styles.spinner} aria-label="Loading" />}
+          {loading && <div className={styles.spinner} aria-label="불러오는 중" />}
           {error && <p className={styles.error}>{error}</p>}
           {!loading && !results.length && query && !error && (
-            <p className={styles.empty}>No results for &ldquo;{query}&rdquo;</p>
+            <p className={styles.empty}>&ldquo;{query}&rdquo;에 대한 결과가 없습니다</p>
           )}
           {!loading && results.length > 0 && (
             <div className={styles.list} role="listbox">
@@ -190,7 +196,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
                 >
                   <PostListItem
                     post={result}
-                    titleHtml={highlightText(result.title, query)}
+                    titleHtml={highlightText(result.title, query, index)}
                   />
                 </div>
               ))}
@@ -199,9 +205,9 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
         </div>
 
         <div className={styles.footer}>
-          <span>↑↓ navigate</span>
-          <span>↵ open</span>
-          <span>esc close</span>
+          <span>↑↓ 이동</span>
+          <span>↵ 열기</span>
+          <span>esc 닫기</span>
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export default function HomePage() {
   if (!featured) {
     return (
       <div className="container" style={{ padding: "64px 24px", textAlign: "center" }}>
-        <p>No posts yet. Add markdown files to content/posts/</p>
+        <p>아직 글이 없습니다. content/posts/ 에 마크다운 파일을 추가하세요.</p>
       </div>
     );
   }

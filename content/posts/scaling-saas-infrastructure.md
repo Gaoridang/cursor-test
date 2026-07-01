@@ -1,23 +1,23 @@
 ---
-title: "Scaling Your SaaS Infrastructure Without Breaking the Bank"
+title: "비용 폭탄 없이 SaaS 인프라 스케일링하기"
 slug: scaling-saas-infrastructure
 date: 2024-08-05
-category: Engineering
+category: 엔지니어링
 image: /images/placeholder.svg
-excerpt: "Cost-effective strategies for growing your backend as your user base expands."
-tags: [infrastructure, scaling, devops]
+excerpt: "사용자 기반이 커질 때 백엔드를 성장시키는 비용 효율적인 전략."
+tags: [인프라, 스케일링, devops]
 ---
 
-Growth is exciting until your cloud bill arrives. Smart scaling means knowing what to optimize and what to leave alone.
+성장은 클라우드 청구서가 도착하기 전까지는 신나는 일입니다. 스마트한 스케일링은 무엇을 최적화하고 무엇을 그대로 둘지 아는 것입니다.
 
-## Right-size before you over-engineer
+## 과도한 설계 전에 적정 규모를 맞춰라
 
-Start with managed services. Premature optimization wastes time you could spend on features users want.
+관리형 서비스부터 시작하세요. 성급한 최적화는 사용자가 원하는 기능에 쓸 수 있는 시간을 낭비합니다.
 
-## Monitor what matters
+## 중요한 것만 모니터링하라
 
-Track p95 latency, error rates, and cost per active user—not vanity metrics.
+p95 지연 시간, 오류율, 활성 사용자당 비용을 추적하세요—허영 지표가 아닙니다.
 
-- Cache aggressively at the edge
-- Use autoscaling with sane limits
-- Review idle resources monthly
+- 엣지에서 적극적으로 캐시하세요
+- 합리적인 한도가 있는 오토스케일링을 사용하세요
+- 유휴 리소스를 매월 검토하세요
