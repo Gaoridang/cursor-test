@@ -1,0 +1,72 @@
+# Cursor Test
+
+Expo (React Native) app configured for iPhone development.
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) 18+ (this repo uses Node 22)
+- **For iPhone (Expo Go):** [Expo Go](https://apps.apple.com/app/expo-go/id982107779) on your iPhone
+- **For native iOS builds:** macOS with [Xcode](https://developer.apple.com/xcode/) and CocoaPods
+
+## Install
+
+```bash
+npm install
+```
+
+## Run on your iPhone (Expo Go — no Mac required)
+
+1. Install **Expo Go** from the App Store on your iPhone.
+2. Start the dev server on your computer:
+
+   ```bash
+   npm start
+   ```
+
+3. Connect your iPhone:
+   - **Same Wi‑Fi:** Open the Camera app and scan the QR code shown in the terminal, or tap the project in Expo Go.
+   - **Different network / remote:** Use tunnel mode:
+
+     ```bash
+     npm run start:tunnel
+     ```
+
+     Scan the QR code with your iPhone camera.
+
+4. The app loads in Expo Go. Edits to `App.tsx` hot-reload on save.
+
+## Run on iPhone Simulator or device (macOS + Xcode)
+
+Requires a Mac with Xcode installed:
+
+```bash
+npm run ios
+```
+
+This opens the iOS Simulator. To run on a physical device connected via USB, use Xcode to select your device, or:
+
+```bash
+npx expo run:ios --device
+```
+
+For a standalone native project (without Expo Go):
+
+```bash
+npx expo prebuild --platform ios
+npx expo run:ios
+```
+
+## Other commands
+
+| Command | Description |
+|--------|-------------|
+| `npm start` | Start Metro bundler (Expo dev server) |
+| `npm run start:tunnel` | Dev server with tunnel (works across networks) |
+| `npm run web` | Run in the browser (quick local check) |
+| `npm run typecheck` | TypeScript check |
+
+## Project structure
+
+- `App.tsx` — root React Native component
+- `app.json` — Expo config (iOS bundle ID, app name, icons)
+- `assets/` — app icons and splash images
