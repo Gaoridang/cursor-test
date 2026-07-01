@@ -18,6 +18,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
+      <head>
+        <link rel="preload" href="/search/index.json" as="fetch" crossOrigin="anonymous" />
+      </head>
       <body className={inter.variable}>
         <Header />
         <main>{children}</main>

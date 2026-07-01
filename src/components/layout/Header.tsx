@@ -58,6 +58,8 @@ export function Header() {
               type="button"
               className={styles.searchBtn}
               onClick={() => setSearchOpen(true)}
+              onMouseEnter={prefetchSearchResources}
+              onFocus={prefetchSearchResources}
               aria-label="글 검색"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

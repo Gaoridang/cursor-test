@@ -4,11 +4,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PostListItem } from "@/components/blog/LatestPosts";
 import { searchBM25, searchBM25WithGaru } from "@/lib/search/bm25";
-import { getGaru } from "@/lib/search/garu";
+import { getCachedGaru, getGaru } from "@/lib/search/garu";
 import { searchGrok } from "@/lib/search/grok";
 import { mergeSearchResults } from "@/lib/search/hybrid";
 import { highlightText } from "@/lib/search/highlight";
-import { getSearchIndex } from "@/lib/search/prefetch";
+import { getCachedSearchIndex, getSearchIndex } from "@/lib/search/prefetch";
 import type { GaruAnalyzer } from "@/lib/search/garu";
 import type { InvertedIndex, SearchMode, SearchResult } from "@/lib/types";
 import styles from "./SearchModal.module.css";
@@ -28,19 +28,16 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
-  const [mode, setMode] = useState<SearchMode>("all");
+  const [mode, setMode] = useState<SearchMode>("keyword");
   const [results, setResults] = useState<SearchResult[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [semanticLoading, setSemanticLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [index, setIndex] = useState<InvertedIndex | null>(null);
-  const [garu, setGaru] = useState<GaruAnalyzer | null>(null);
+  const [index, setIndex] = useState<InvertedIndex | null>(() => getCachedSearchIndex());
+  const [garu, setGaru] = useState<GaruAnalyzer | null>(() => getCachedGaru());
   const [activeIndex, setActiveIndex] = useState(0);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (!open) return;
-    inputRef.current?.focus();
-
     if (!index) {
       getSearchIndex()
         .then(setIndex)
@@ -52,7 +49,12 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
         .then(setGaru)
         .catch(() => {});
     }
-  }, [open, index, garu]);
+  }, [index, garu]);
+
+  useEffect(() => {
+    if (!open) return;
+    inputRef.current?.focus();
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -80,6 +82,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
       setQuery("");
       setResults([]);
       setError(null);
+      setSemanticLoading(false);
       setActiveIndex(0);
     }
   }, [open]);
@@ -89,6 +92,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
       if (!q.trim()) {
         setResults([]);
         setError(null);
+        setSemanticLoading(false);
         return;
       }
 
@@ -106,23 +110,33 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
         return;
       }
 
-      setLoading(true);
-      try {
-        if (searchMode === "semantic") {
+      if (searchMode === "semantic") {
+        setSemanticLoading(true);
+        try {
           const grok = await searchGrok(q, "semantic");
           setResults(grok);
-        } else {
+        } catch {
           const bm25 = runBm25();
-          try {
-            const grok = await searchGrok(q, "hybrid");
-            setResults(mergeSearchResults(bm25, grok));
-          } catch {
+          if (bm25.length) {
             setResults(bm25);
             setError("시맨틱 검색을 사용할 수 없습니다 — 키워드 결과를 표시합니다");
+          } else {
+            setError("검색을 사용할 수 없습니다");
           }
+        } finally {
+          setSemanticLoading(false);
         }
+        return;
+      }
+
+      const bm25 = runBm25();
+      if (bm25.length) setResults(bm25);
+
+      setSemanticLoading(true);
+      try {
+        const grok = await searchGrok(q, "hybrid");
+        setResults(mergeSearchResults(bm25, grok));
       } catch {
-        const bm25 = runBm25();
         if (bm25.length) {
           setResults(bm25);
           setError("시맨틱 검색을 사용할 수 없습니다 — 키워드 결과를 표시합니다");
@@ -130,7 +144,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
           setError("검색을 사용할 수 없습니다");
         }
       } finally {
-        setLoading(false);
+        setSemanticLoading(false);
       }
     },
     [index, garu]
@@ -153,7 +167,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
 
   if (!open) return null;
 
-  const isIndexLoading = !index;
+  const showSpinner = semanticLoading && results.length === 0;
 
   return (
     <div className={styles.overlay} onClick={onClose} role="presentation">
@@ -196,12 +210,12 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
         </div>
 
         <div className={styles.results}>
-          {(loading || isIndexLoading) && <div className={styles.spinner} aria-label="불러오는 중" />}
+          {showSpinner && <div className={styles.spinner} aria-label="불러오는 중" />}
           {error && <p className={styles.error}>{error}</p>}
-          {!loading && !isIndexLoading && !results.length && query && !error && (
+          {!showSpinner && !results.length && query && !error && (
             <p className={styles.empty}>&ldquo;{query}&rdquo;에 대한 결과가 없습니다</p>
           )}
-          {!loading && results.length > 0 && (
+          {results.length > 0 && (
             <div className={styles.list} role="listbox">
               {results.map((result, i) => (
                 <div

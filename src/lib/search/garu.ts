@@ -23,3 +23,7 @@ export async function getGaru(): Promise<GaruAnalyzer> {
 export function isGaruLoaded(): boolean {
   return garuInstance?.isLoaded() ?? false;
 }
+
+export function getCachedGaru(): GaruAnalyzer | null {
+  return garuInstance?.isLoaded() ? garuInstance : null;
+}
