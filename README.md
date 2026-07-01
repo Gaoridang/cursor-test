@@ -85,6 +85,15 @@ npm run build:ios:testflight
 
 자세한 단계별 가이드: **[docs/TESTFLIGHT.ko.md](./docs/TESTFLIGHT.ko.md)**
 
+### Windows 로컬 설치 없이 (GitHub Actions)
+
+PC에 Node를 깔지 않고 GitHub에서 TestFlight까지 올리려면:
+
+1. Apple Developer + Expo 계정 + GitHub Secrets 설정 (1회)
+2. Actions → **Deploy to TestFlight** → **Run workflow**
+
+자세한 설정: **[docs/GITHUB_ACTIONS.ko.md](./docs/GITHUB_ACTIONS.ko.md)**
+
 ## Project structure
 
 - `App.tsx` — root React Native component
