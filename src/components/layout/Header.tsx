@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { SearchModal } from "@/components/search/SearchModal";
+import { prefetchSearchResources } from "@/lib/search/prefetch";
 import styles from "./Header.module.css";
 
 const NAV_ITEMS = [
@@ -16,6 +17,10 @@ const NAV_ITEMS = [
 export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    prefetchSearchResources();
+  }, []);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
