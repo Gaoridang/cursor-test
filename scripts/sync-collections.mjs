@@ -6,7 +6,7 @@ import crypto from "crypto";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 const postsDir = path.join(root, "content", "posts");
-const stateFile = path.join(root, ".collection-sync-state.json");
+const stateFile = path.join(root, "collection-sync-state.json");
 
 const MGMT_KEY = process.env.XAI_MANAGEMENT_API_KEY;
 const COLLECTION_ID = process.env.XAI_COLLECTION_ID;
@@ -36,25 +36,29 @@ function hashContent(content) {
 
 function loadPosts() {
   if (!fs.existsSync(postsDir)) return [];
-  return fs.readdirSync(postsDir).filter((f) => f.endsWith(".md")).map((filename) => {
-    const raw = fs.readFileSync(path.join(postsDir, filename), "utf8");
-    const { data, content } = parseFrontmatter(raw);
-    const slug = String(data.slug || filename.replace(/\.md$/, ""));
-    return {
-      slug,
-      content,
-      hash: hashContent(raw),
-      fields: {
+  return fs
+    .readdirSync(postsDir)
+    .filter((f) => f.endsWith(".md"))
+    .map((filename) => {
+      const raw = fs.readFileSync(path.join(postsDir, filename), "utf8");
+      const { data, content } = parseFrontmatter(raw);
+      const slug = String(data.slug || filename.replace(/\.md$/, ""));
+      return {
         slug,
-        title: String(data.title || slug),
-        date: String(data.date || ""),
-        category: String(data.category || "General"),
-        image: String(data.image || "/images/placeholder.jpg"),
-        excerpt: String(data.excerpt || content.slice(0, 160)),
-        readTime: String(Math.max(1, Math.ceil(content.split(/\s+/).length / 200))),
-      },
-    };
-  });
+        content,
+        hash: hashContent(raw),
+        fields: {
+          slug,
+          title: String(data.title || slug),
+          date: String(data.date || ""),
+          category: String(data.category || "General"),
+          image: String(data.image || "/images/placeholder.jpg"),
+          excerpt: String(data.excerpt || content.slice(0, 160)),
+          readTime: String(Math.max(1, Math.ceil(content.split(/\s+/).length / 200))),
+          contentHash: hashContent(raw),
+        },
+      };
+    });
 }
 
 function loadState() {
@@ -66,8 +70,54 @@ function saveState(state) {
   fs.writeFileSync(stateFile, JSON.stringify(state, null, 2));
 }
 
+async function listRemoteDocuments() {
+  const res = await fetch(
+    `https://management-api.x.ai/v1/collections/${COLLECTION_ID}/documents`,
+    { headers: { Authorization: `Bearer ${MGMT_KEY}` } }
+  );
+  if (!res.ok) {
+    console.warn("Could not list collection documents:", await res.text());
+    return {};
+  }
+
+  const data = await res.json();
+  const documents = data.documents || data.data || data.items || [];
+  const bySlug = {};
+
+  for (const doc of documents) {
+    const fileId = doc.file_id || doc.document_id || doc.id;
+    const fields = doc.fields || {};
+    const slug =
+      fields.slug ||
+      (doc.name || "").replace(/\.md$/, "");
+    if (slug && fileId) {
+      bySlug[slug] = {
+        fileId,
+        hash: fields.contentHash || null,
+      };
+    }
+  }
+
+  return bySlug;
+}
+
+async function hydrateState(state) {
+  const remote = await listRemoteDocuments();
+  const hydrated = { files: { ...state.files } };
+
+  for (const [slug, meta] of Object.entries(remote)) {
+    if (!hydrated.files[slug]) {
+      hydrated.files[slug] = meta;
+    }
+  }
+
+  return hydrated;
+}
+
 async function uploadDocument(post) {
-  const body = `---\n${Object.entries(post.fields).map(([k, v]) => `${k}: ${v}`).join("\n")}\n---\n\n${post.content}`;
+  const body = `---\n${Object.entries(post.fields)
+    .map(([k, v]) => `${k}: ${v}`)
+    .join("\n")}\n---\n\n${post.content}`;
   const formData = new FormData();
   formData.append("name", `${post.slug}.md`);
   formData.append("data", new Blob([body], { type: "text/markdown" }), `${post.slug}.md`);
@@ -86,11 +136,16 @@ async function uploadDocument(post) {
 }
 
 async function removeDocument(fileId) {
-  const res = await fetch(`https://management-api.x.ai/v1/collections/${COLLECTION_ID}/documents/${fileId}`, {
-    method: "DELETE",
-    headers: { Authorization: `Bearer ${MGMT_KEY}` },
-  });
-  if (!res.ok && res.status !== 404) throw new Error(`Delete failed: ${await res.text()}`);
+  const res = await fetch(
+    `https://management-api.x.ai/v1/collections/${COLLECTION_ID}/documents/${fileId}`,
+    {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${MGMT_KEY}` },
+    }
+  );
+  if (!res.ok && res.status !== 404) {
+    throw new Error(`Delete failed: ${await res.text()}`);
+  }
 }
 
 async function main() {
@@ -100,14 +155,14 @@ async function main() {
   }
 
   const posts = loadPosts();
-  const state = loadState();
+  let state = await hydrateState(loadState());
   const newState = { files: {} };
   const currentSlugs = new Set(posts.map((p) => p.slug));
 
   for (const post of posts) {
     const prev = state.files[post.slug];
     if (prev?.hash === post.hash) {
-      newState.files[post.slug] = prev;
+      newState.files[post.slug] = { hash: post.hash, fileId: prev.fileId };
       continue;
     }
     if (prev?.fileId) await removeDocument(prev.fileId);
@@ -123,7 +178,11 @@ async function main() {
     }
   }
 
-  saveState(newState);
+  // Persist state for local dev; Vercel builds are ephemeral but remote hash in fields enables re-hydration.
+  if (!process.env.VERCEL) {
+    saveState(newState);
+  }
+
   console.log(`Collection sync complete (${posts.length} posts)`);
 }
 

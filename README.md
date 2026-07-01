@@ -49,6 +49,16 @@ Search modal tabs:
 
 Press `Cmd+K` (or `Ctrl+K`) to open search.
 
+## Deploy to Vercel
+
+**Works without env vars** — Keyword search only until you add xAI keys.
+
+1. Connect this repo on [vercel.com](https://vercel.com)
+2. Deploy ( `vercel.json` configures the build )
+3. Later: add `XAI_API_KEY`, `XAI_MANAGEMENT_API_KEY`, `XAI_COLLECTION_ID`, `NEXT_PUBLIC_SITE_URL` in Vercel → Settings → Environment Variables → Redeploy
+
+See [docs/VERCEL.md](docs/VERCEL.md) for the full checklist (Korean).
+
 ## Adding Posts
 
 Create a file in `content/posts/`:
