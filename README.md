@@ -30,7 +30,7 @@ node scripts/build-search-index.mjs
 
 인덱스는 `public/search/index.json`에 저장되며 클라이언트에서 로드됩니다.
 
-한국어 검색은 어절 단위 토큰화와 바이그램(2-gram) 색인을 사용합니다.
+한국어 검색은 **garu-ko 형태소 분석**(morph) + **edge n-gram**(부분 검색) 멀티필드 BM25를 사용합니다.
 
 ### 시맨틱 (Grok Collections)
 

@@ -1,12 +1,14 @@
-import type { InvertedIndex } from "@/lib/types";
-import { getVocabulary } from "./inverted-index";
+import type { IndexField, InvertedIndex } from "@/lib/types";
+import { getMorphField, getNgramField, getVocabulary } from "./inverted-index";
 import { isHangulToken, resolveTerm, tokenize } from "./tokenizer";
 
 export function highlightText(text: string, query: string, index?: InvertedIndex | null): string {
   const tokens = tokenize(query);
   if (!tokens.length) return text;
 
-  const vocabulary = index ? getVocabulary(index) : tokens;
+  const vocabulary = index
+    ? [...getVocabulary(getMorphField(index)), ...(getNgramField(index) ? getVocabulary(getNgramField(index)!) : [])]
+    : tokens;
   const highlights = new Set<string>();
 
   for (const token of tokens) {
