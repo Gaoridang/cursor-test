@@ -175,6 +175,13 @@
       "notes": "조사 붙은 어절 — baseline 실패 예상"
     },
     {
+      "id": "negative-loading",
+      "query": "로딩",
+      "relevant": [],
+      "category": "negative",
+      "notes": "본문에 없는 단어 — ngram fuzzy 오탐 방지"
+    },
+    {
       "id": "negative-no-match",
       "query": "블록체인",
       "relevant": [],

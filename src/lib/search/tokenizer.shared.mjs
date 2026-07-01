@@ -50,7 +50,7 @@ function hangulTokens(word) {
 
   for (let i = 0; i < Math.min(MAX_EDGE_BIGRAMS, word.length - 1); i++) {
     const bigram = word.slice(i, i + 2);
-    if (!STOP_WORDS.has(bigram)) tokens.push(bigram);
+    if (!STOP_WORDS.has(bigram) && bigram !== word) tokens.push(bigram);
   }
 
   return tokens;
@@ -128,6 +128,9 @@ export function levenshtein(a, b) {
 export function findFuzzyTerm(queryToken, vocabulary, maxDistance = 1) {
   if (vocabulary.includes(queryToken)) return queryToken;
 
+  // 짧은 한글 토큰은 fuzzy 시 오탐이 많음 (예: 로딩 → 프로세스의 bi-gram 로세)
+  if (isHangulToken(queryToken) && queryToken.length < 3) return null;
+
   const pool = vocabulary.filter((term) =>
     isHangulToken(queryToken) ? isHangulToken(term) : isLatinToken(term)
   );
@@ -148,16 +151,19 @@ export function findFuzzyTerm(queryToken, vocabulary, maxDistance = 1) {
 }
 
 /** exact → prefix → fuzzy 순으로 인덱스 용어를 찾습니다. */
-export function resolveTerm(queryToken, vocabulary) {
+export function resolveTerm(queryToken, vocabulary, options = {}) {
+  const { allowFuzzy = true, allowPrefix = true } = options;
+
   if (vocabulary.includes(queryToken)) return queryToken;
 
   const minPrefix = isHangulToken(queryToken) ? 2 : 3;
-  if (queryToken.length >= minPrefix) {
+  if (allowPrefix && queryToken.length >= minPrefix) {
     const prefixMatches = vocabulary.filter((t) => t.startsWith(queryToken));
     if (prefixMatches.length > 0) {
       return prefixMatches.sort((a, b) => a.length - b.length || a.localeCompare(b))[0];
     }
   }
 
-  return findFuzzyTerm(queryToken, vocabulary);
+  if (allowFuzzy) return findFuzzyTerm(queryToken, vocabulary);
+  return null;
 }

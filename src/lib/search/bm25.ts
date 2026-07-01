@@ -5,7 +5,6 @@ import {
   getMorphField,
   getNgramField,
   getVocabulary,
-  isLegacyIndex,
 } from "./inverted-index";
 import { resolveTerm, tokenize } from "./tokenizer";
 
@@ -31,7 +30,8 @@ function scoreField(
   field: IndexField,
   totalDocs: number,
   weight: number,
-  requireMatch: boolean
+  requireMatch: boolean,
+  resolveOptions: { allowFuzzy?: boolean; allowPrefix?: boolean } = {}
 ): { scores: Map<number, number>; matchedCounts: Map<number, number> } {
   const vocabulary = getVocabulary(field);
   const scores = new Map<number, number>();
@@ -39,8 +39,10 @@ function scoreField(
 
   if (!queryTokens.length) return { scores, matchedCounts };
 
-  for (const rawToken of queryTokens) {
-    const term = resolveTerm(rawToken, vocabulary);
+  const uniqueTokens = [...new Set(queryTokens)];
+
+  for (const rawToken of uniqueTokens) {
+    const term = resolveTerm(rawToken, vocabulary, resolveOptions);
     if (!term) continue;
 
     const postingList = field.postings[term];
@@ -64,7 +66,7 @@ function scoreField(
   }
 
   if (requireMatch) {
-    const required = getRequiredMatches(queryTokens.length);
+    const required = getRequiredMatches(uniqueTokens.length);
     for (const [docId, count] of matchedCounts) {
       if (count < required) {
         scores.delete(docId);
@@ -86,7 +88,7 @@ function mergeScores(...scoreMaps: Map<number, number>[]): Map<number, number> {
 }
 
 export function tokenizeQuery(query: string, garu?: GaruAnalyzer | null): QueryTokens {
-  const ngram = tokenize(query);
+  const ngram = [...new Set(tokenize(query))];
   const morph = garu ? extractMorphTokens(garu, query) : ngram;
   return { morph, ngram };
 }
@@ -101,7 +103,14 @@ export function searchBM25(
   const morphField = getMorphField(index);
   const ngramField = getNgramField(index);
 
-  const morphResult = scoreField(tokens.morph, morphField, index.totalDocs, MORPH_WEIGHT, true);
+  const morphResult = scoreField(
+    tokens.morph,
+    morphField,
+    index.totalDocs,
+    MORPH_WEIGHT,
+    true,
+    { allowFuzzy: true, allowPrefix: true }
+  );
 
   let scores = morphResult.scores;
 
@@ -111,14 +120,10 @@ export function searchBM25(
       ngramField,
       index.totalDocs,
       NGRAM_WEIGHT,
-      scores.size === 0
+      scores.size === 0,
+      { allowFuzzy: false, allowPrefix: true }
     );
     scores = mergeScores(scores, ngramResult.scores);
-  }
-
-  if (!scores.size && !isLegacyIndex(index) && ngramField) {
-    const fallback = scoreField(tokens.ngram, ngramField, index.totalDocs, NGRAM_WEIGHT, true);
-    scores = fallback.scores;
   }
 
   return [...scores.entries()]
