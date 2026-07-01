@@ -137,7 +137,7 @@ function printReport(
   latency: ReturnType<typeof runBenchmark>["latency"],
   caseResults: CaseResult[]
 ) {
-  console.log("\n=== 검색 벤치마크 (Phase 0 Baseline) ===\n");
+  console.log("\n=== 검색 벤치마크 ===\n");
 
   console.log("[인덱스 메트릭]");
   console.log(`  문서 수:        ${indexMetrics.totalDocs}`);
@@ -187,9 +187,10 @@ function main() {
   const { caseResults, macro, latency } = runBenchmark(index, golden);
 
   const timestamp = new Date().toISOString();
+  const phase = process.env.BENCHMARK_PHASE ?? "latest";
   const report = {
     generatedAt: timestamp,
-    phase: "0-baseline",
+    phase,
     indexMetrics,
     macro,
     latency,
@@ -197,7 +198,7 @@ function main() {
   };
 
   mkdirSync(reportsDir, { recursive: true });
-  const reportPath = path.join(reportsDir, "baseline.json");
+  const reportPath = path.join(reportsDir, phase === "latest" ? "latest.json" : `${phase}.json`);
   writeFileSync(reportPath, JSON.stringify(report, null, 2));
 
   printReport(indexMetrics, macro, latency, caseResults);

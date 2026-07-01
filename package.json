@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/build-search-index.mjs && next dev",
     "prebuild": "node scripts/vercel-build.mjs",
     "build": "next build",
     "start": "next start",

@@ -60,7 +60,7 @@ npm run benchmark:search
 ```
 
 - Golden set: `benchmarks/search-golden-set.json`
-- 리포트: `benchmarks/reports/baseline.json`
+- 리포트: `benchmarks/reports/baseline.json` (Phase 0), `benchmarks/reports/latest.json` (최신)
 
 검색 로직을 변경할 때마다 이 명령으로 회귀 테스트하세요.
 
