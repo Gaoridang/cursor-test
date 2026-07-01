@@ -1,9 +1,10 @@
 import { formatDate } from "@/lib/dates";
+import styles from "./PostMeta.module.css";
 
 export function PostMeta({ date, readTime }: { date: string; readTime: number }) {
   return (
-    <span style={{ fontSize: "13px", color: "var(--color-text-muted)" }}>
-      {formatDate(date)} • {readTime}분 읽기
+    <span className={styles.meta}>
+      {formatDate(date)} · {readTime}분 읽기
     </span>
   );
 }

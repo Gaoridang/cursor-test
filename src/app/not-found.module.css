@@ -1,0 +1,29 @@
+.page {
+  padding: 120px var(--space-6);
+  text-align: center;
+}
+
+.code {
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-4);
+  color: var(--color-primary);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.message {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: var(--font-weight-medium);
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: var(--color-primary-hover);
+}

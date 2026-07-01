@@ -59,8 +59,13 @@ export default async function BlogPostPage({ params }: PageProps) {
       <div className={`prose ${styles.body}`} dangerouslySetInnerHTML={{ __html: post.html }} />
 
       {related.length > 0 && (
-        <section className={styles.related}>
-          <h2 className={styles.relatedTitle}>관련 글</h2>
+        <section className={styles.related} aria-labelledby="related-posts-heading">
+          <div className={styles.relatedHeading}>
+            <span className={styles.relatedLabel}>더 읽어보기</span>
+            <h2 id="related-posts-heading" className={styles.relatedTitle}>
+              관련 글
+            </h2>
+          </div>
           <div className={styles.relatedGrid}>
             {related.map((p) => (
               <PostCard key={p.slug} post={p} />
