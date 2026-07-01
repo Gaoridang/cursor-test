@@ -51,6 +51,19 @@ npm run sync:collections
 
 `Cmd+K` (또는 `Ctrl+K`)로 검색을 엽니다.
 
+### 검색 품질 벤치마크 (Phase 0)
+
+Golden set(25건)으로 NDCG@5, MRR, Recall@5, Hit Rate를 측정합니다.
+
+```bash
+npm run benchmark:search
+```
+
+- Golden set: `benchmarks/search-golden-set.json`
+- 리포트: `benchmarks/reports/baseline.json` (Phase 0), `benchmarks/reports/latest.json` (최신)
+
+검색 로직을 변경할 때마다 이 명령으로 회귀 테스트하세요.
+
 ## Vercel 배포
 
 **env 없이도 동작** — xAI 키를 추가하기 전까지는 키워드 검색만 사용됩니다.

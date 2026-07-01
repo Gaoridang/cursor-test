@@ -1,6 +1,19 @@
 import stopWords from "./stop-words.json" with { type: "json" };
+import userDictionary from "./user-dictionary.json" with { type: "json" };
 
 export const STOP_WORDS = new Set(stopWords);
+export const USER_TERMS = new Set(userDictionary);
+
+/** 붙여쓴 복합어 → 분해 토큰 (검색·색인 공통) */
+export const DECOMPOSITIONS = {
+  고객피드백: ["고객", "피드백"],
+  원격근무: ["원격", "근무"],
+};
+
+const JOSA_PATTERN =
+  /(에서|으로|에게|까지|부터|처럼|하고|이며|에는|과|와|을|를|이|가|은|는|의|에|도|로|한|만)$/;
+
+const MAX_EDGE_BIGRAMS = 2;
 
 export function isHangulChar(ch) {
   const code = ch.charCodeAt(0);
@@ -15,16 +28,29 @@ export function isLatinToken(token) {
   return /^[a-z0-9]+$/.test(token);
 }
 
+/** 어절 끝 조사를 제거합니다. */
+export function stripJosa(word) {
+  if (!isHangulToken(word)) return word;
+
+  let current = word;
+  while (current.length >= 2) {
+    const next = current.replace(JOSA_PATTERN, "");
+    if (next === current || next.length < 2) break;
+    current = next;
+  }
+
+  return current;
+}
+
 function hangulTokens(word) {
   const tokens = [];
   if (word.length < 2 || STOP_WORDS.has(word)) return tokens;
 
   tokens.push(word);
-  if (word.length >= 3) {
-    for (let i = 0; i < word.length - 1; i++) {
-      const bigram = word.slice(i, i + 2);
-      if (!STOP_WORDS.has(bigram)) tokens.push(bigram);
-    }
+
+  for (let i = 0; i < Math.min(MAX_EDGE_BIGRAMS, word.length - 1); i++) {
+    const bigram = word.slice(i, i + 2);
+    if (!STOP_WORDS.has(bigram)) tokens.push(bigram);
   }
 
   return tokens;
@@ -35,7 +61,21 @@ function latinToken(word) {
   return [];
 }
 
-/** 한국어 어절 + 바이그램, 영문/숫자 토큰을 추출합니다. */
+function processHangulSegment(segment) {
+  const stripped = stripJosa(segment);
+
+  if (DECOMPOSITIONS[stripped]) {
+    return DECOMPOSITIONS[stripped].flatMap((part) => hangulTokens(part));
+  }
+
+  if (USER_TERMS.has(stripped)) {
+    return hangulTokens(stripped);
+  }
+
+  return hangulTokens(stripped);
+}
+
+/** 한국어 어절 + edge 바이그램, 영문/숫자 토큰을 추출합니다. */
 export function tokenize(text) {
   const normalized = text.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ");
   const tokens = [];
@@ -50,12 +90,13 @@ export function tokenize(text) {
       if (isHangulChar(ch)) {
         let j = i + 1;
         while (j < segment.length && isHangulChar(segment[j])) j++;
-        tokens.push(...hangulTokens(segment.slice(i, j)));
+        tokens.push(...processHangulSegment(segment.slice(i, j)));
         i = j;
       } else if (/[a-z0-9]/.test(ch)) {
         let j = i + 1;
         while (j < segment.length && /[a-z0-9]/.test(segment[j])) j++;
-        tokens.push(...latinToken(segment.slice(i, j)));
+        const word = segment.slice(i, j);
+        tokens.push(...(USER_TERMS.has(word) ? [word] : latinToken(word)));
         i = j;
       } else {
         i++;

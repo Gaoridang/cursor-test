@@ -10,6 +10,13 @@ function idf(term: string, index: InvertedIndex): number {
   return Math.log(1 + (index.totalDocs - df + 0.5) / (df + 0.5));
 }
 
+/** 토큰 수에 따른 최소 매칭 개수 (minimum_should_match) */
+export function getRequiredMatches(tokenCount: number): number {
+  if (tokenCount <= 1) return 1;
+  if (tokenCount === 2) return 2;
+  return Math.ceil(tokenCount * 0.75);
+}
+
 export function searchBM25(query: string, index: InvertedIndex, limit = 10): SearchResult[] {
   const queryTokens = tokenize(query);
   if (!queryTokens.length) return [];
@@ -17,6 +24,7 @@ export function searchBM25(query: string, index: InvertedIndex, limit = 10): Sea
   const vocabulary = getVocabulary(index);
   const scores = new Map<number, number>();
   const matchedTokenCounts = new Map<number, number>();
+  const requiredMatches = getRequiredMatches(queryTokens.length);
 
   for (const rawToken of queryTokens) {
     const term = resolveTerm(rawToken, vocabulary);
@@ -42,10 +50,8 @@ export function searchBM25(query: string, index: InvertedIndex, limit = 10): Sea
     }
   }
 
-  const requiredMatches = queryTokens.length;
-
   return [...scores.entries()]
-    .filter(([docId]) => matchedTokenCounts.get(docId) === requiredMatches)
+    .filter(([docId]) => (matchedTokenCounts.get(docId) ?? 0) >= requiredMatches)
     .sort((a, b) => b[1] - a[1])
     .slice(0, limit)
     .map(([docId, score]) => ({
