@@ -25,16 +25,21 @@ export function PostListItem({
       <div className={styles.thumb}>
         <Image src={post.image} alt={post.title} fill sizes="72px" />
       </div>
-      <div>
-        <PostLabels category={post.category} tags={getTags(post)} />
+      <div className={styles.content}>
+        <PostLabels
+          category={post.category}
+          tags={getTags(post)}
+          layout="compact"
+          maxTags={2}
+        />
         {titleHtml ? (
           <h3 className={styles.itemTitle} dangerouslySetInnerHTML={{ __html: titleHtml }} />
         ) : (
           <h3 className={styles.itemTitle}>{post.title}</h3>
         )}
-        <div className={styles.meta}>
+        <footer className={styles.meta}>
           <PostMeta date={post.date} readTime={post.readTime} />
-        </div>
+        </footer>
       </div>
     </Link>
   );

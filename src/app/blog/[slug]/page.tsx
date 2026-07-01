@@ -50,9 +50,15 @@ export default async function BlogPostPage({ params }: PageProps) {
           sizes="100vw"
         />
         <div className={styles.heroOverlay}>
-          <PostLabels category={post.category} tags={post.tags} />
-          <h1 className={styles.title}>{post.title}</h1>
-          <PostMeta date={post.date} readTime={post.readTime} />
+          <div className={styles.heroContent}>
+            <div className={styles.heroLabels}>
+              <PostLabels category={post.category} tags={post.tags} layout="stacked" />
+            </div>
+            <h1 className={styles.title}>{post.title}</h1>
+            <div className={styles.heroMeta}>
+              <PostMeta date={post.date} readTime={post.readTime} />
+            </div>
+          </div>
         </div>
       </div>
 
