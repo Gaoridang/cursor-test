@@ -1,10 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
+import { PostLabels } from "@/components/ui/PostLabels";
 import { PostMeta } from "@/components/ui/PostMeta";
 import type { Post, SearchResult } from "@/lib/types";
 import styles from "./LatestPosts.module.css";
 
 type Item = Post | SearchResult;
+
+function getTags(post: Item): string[] | undefined {
+  return "tags" in post ? post.tags : undefined;
+}
 
 export function PostListItem({
   post,
@@ -19,6 +24,7 @@ export function PostListItem({
         <Image src={post.image} alt={post.title} fill sizes="72px" />
       </div>
       <div>
+        <PostLabels category={post.category} tags={getTags(post)} />
         {titleHtml ? (
           <h3 className={styles.itemTitle} dangerouslySetInnerHTML={{ __html: titleHtml }} />
         ) : (

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { CategoryTag } from "@/components/ui/CategoryTag";
+import { PostLabels } from "@/components/ui/PostLabels";
 import { PostMeta } from "@/components/ui/PostMeta";
 import { PostCard } from "@/components/blog/PostCard";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
@@ -50,7 +50,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           sizes="100vw"
         />
         <div className={styles.heroOverlay}>
-          <CategoryTag label={post.category} />
+          <PostLabels category={post.category} tags={post.tags} />
           <h1 className={styles.title}>{post.title}</h1>
           <PostMeta date={post.date} readTime={post.readTime} />
         </div>
