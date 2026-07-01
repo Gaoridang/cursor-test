@@ -4,6 +4,7 @@
       0,
       0,
       0,
+      1,
       4
     ],
     "customer": [
@@ -17,27 +18,23 @@
       0,
       0,
       0,
+      0,
+      0,
+      0,
       0
     ],
     "loop": [
       0,
       0,
       0,
+      0,
       0
-    ],
-    "that": [
-      0,
-      0,
-      0,
-      1,
-      3,
-      4,
-      4
     ],
     "actually": [
       0,
       0,
       0,
+      1,
       1
     ],
     "works": [
@@ -46,42 +43,55 @@
       0
     ],
     "turn": [
+      0,
       0
     ],
     "user": [
       0,
+      0,
       3,
       3,
       3,
+      5,
+      5,
       5
-    ],
-    "into": [
-      0
     ],
     "product": [
       0,
       0,
       0,
+      0,
+      0,
+      0,
       3,
       3,
       3,
       3,
+      4,
       4,
       4,
       4
     ],
     "decisions": [
       0,
+      0,
       1,
       2
     ],
     "structured": [
+      0,
       0
     ],
     "repeatable": [
+      0,
       0
     ],
     "process": [
+      0,
+      0
+    ],
+    "customers": [
+      0,
       0
     ],
     "only": [
@@ -90,33 +100,8 @@
     "valuable": [
       0
     ],
-    "when": [
-      0,
-      1,
-      2
-    ],
-    "it": [
-      0,
-      2,
-      3
-    ],
     "changes": [
       0
-    ],
-    "what": [
-      0,
-      3,
-      3,
-      3,
-      5,
-      5,
-      5
-    ],
-    "you": [
-      0,
-      2,
-      5,
-      5
     ],
     "build": [
       0
@@ -124,19 +109,8 @@
     "here": [
       0
     ],
-    "how": [
-      0,
-      1,
-      1,
-      2
-    ],
-    "we": [
-      0,
-      4,
-      4,
-      4
-    ],
     "close": [
+      0,
       0
     ],
     "collect": [
@@ -192,15 +166,12 @@
     "ruthlessly": [
       0
     ],
-    "not": [
-      0,
-      1,
-      2
-    ],
     "every": [
       0,
+      1,
       2,
       3,
+      4,
       4
     ],
     "request": [
@@ -214,12 +185,73 @@
     ],
     "use": [
       0,
-      2
+      1,
+      2,
+      3,
+      5
     ],
     "impact": [
       0
     ],
     "effort": [
+      0
+    ],
+    "rank": [
+      0
+    ],
+    "ideas": [
+      0
+    ],
+    "say": [
+      0
+    ],
+    "clearly": [
+      0
+    ],
+    "publicly": [
+      0
+    ],
+    "ship": [
+      0
+    ],
+    "something": [
+      0
+    ],
+    "users": [
+      0,
+      3,
+      3,
+      3,
+      3,
+      3,
+      5
+    ],
+    "asked": [
+      0
+    ],
+    "tell": [
+      0
+    ],
+    "them": [
+      0
+    ],
+    "builds": [
+      0,
+      3
+    ],
+    "loyalty": [
+      0
+    ],
+    "encourages": [
+      0
+    ],
+    "more": [
+      0
+    ],
+    "honest": [
+      0
+    ],
+    "input": [
       0
     ],
     "enhancing": [
@@ -231,10 +263,15 @@
       1,
       1,
       1,
+      1,
+      4,
       4,
       4
     ],
     "collaboration": [
+      1,
+      1,
+      1,
       1,
       1,
       1,
@@ -246,6 +283,12 @@
       1,
       1,
       1,
+      1,
+      1,
+      1,
+      1,
+      3,
+      3,
       3,
       3,
       3,
@@ -254,6 +297,7 @@
       5
     ],
     "products": [
+      1,
       1,
       1,
       1,
@@ -275,6 +319,7 @@
       1,
       1,
       1,
+      1,
       1
     ],
     "workflows": [
@@ -284,30 +329,50 @@
       1
     ],
     "discover": [
+      1,
       1
     ],
     "transforming": [
+      1,
       1
     ],
     "way": [
       1,
-      1
+      1,
+      1,
+      4
     ],
     "teams": [
       1,
       1,
       1,
       1,
+      1,
+      2,
+      2,
       2,
       2
     ],
     "collaborate": [
+      1,
       1
     ],
     "communicate": [
+      1,
       1
     ],
     "workplaces": [
+      1,
+      1
+    ],
+    "category": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "workflow": [
+      1,
       1
     ],
     "need": [
@@ -315,16 +380,14 @@
     ],
     "tools": [
       1,
+      1,
+      1,
       2,
       2,
       2
     ],
     "adapt": [
       1
-    ],
-    "they": [
-      1,
-      4
     ],
     "work": [
       1,
@@ -340,8 +403,7 @@
       1
     ],
     "become": [
-      1,
-      2
+      1
     ],
     "backbone": [
       1
@@ -354,6 +416,7 @@
     ],
     "distributed": [
       1,
+      2,
       2
     ],
     "stay": [
@@ -370,12 +433,11 @@
       5
     ],
     "friction": [
-      1
-    ],
-    "why": [
-      1
+      1,
+      3
     ],
     "matters": [
+      1,
       1,
       5
     ],
@@ -396,11 +458,166 @@
     "faster": [
       1
     ],
-    "category": [
+    "right": [
       1,
+      5
+    ],
+    "stack": [
+      1
+    ],
+    "reduces": [
+      1
+    ],
+    "email": [
+      1
+    ],
+    "overload": [
+      1
+    ],
+    "keeps": [
+      1,
+      1
+    ],
+    "everyone": [
+      1
+    ],
+    "same": [
+      1,
+      4,
+      4
+    ],
+    "page": [
+      1
+    ],
+    "real": [
+      1,
+      3
+    ],
+    "time": [
       1,
       2,
+      5
+    ],
+    "editing": [
+      1
+    ],
+    "eliminates": [
+      1
+    ],
+    "version": [
+      1
+    ],
+    "confusion": [
+      1
+    ],
+    "integrated": [
+      1
+    ],
+    "notifications": [
+      1
+    ],
+    "surface": [
+      1
+    ],
+    "role": [
+      1
+    ],
+    "based": [
+      1
+    ],
+    "access": [
+      1
+    ],
+    "sensitive": [
+      1
+    ],
+    "data": [
+      1
+    ],
+    "secure": [
+      1
+    ],
+    "adoption": [
+      1
+    ],
+    "best": [
+      1,
       2
+    ],
+    "feel": [
+      1
+    ],
+    "invisible": [
+      1
+    ],
+    "fit": [
+      1
+    ],
+    "existing": [
+      1
+    ],
+    "habits": [
+      1
+    ],
+    "rather": [
+      1
+    ],
+    "demanding": [
+      1
+    ],
+    "new": [
+      1
+    ],
+    "ones": [
+      1
+    ],
+    "start": [
+      1,
+      5
+    ],
+    "one": [
+      1,
+      3
+    ],
+    "pain": [
+      1
+    ],
+    "point": [
+      1
+    ],
+    "solve": [
+      1
+    ],
+    "well": [
+      1
+    ],
+    "expand": [
+      1
+    ],
+    "key": [
+      1
+    ],
+    "takeaway": [
+      1
+    ],
+    "invest": [
+      1,
+      2
+    ],
+    "day": [
+      1
+    ],
+    "shelfware": [
+      1
+    ],
+    "looks": [
+      1
+    ],
+    "good": [
+      1
+    ],
+    "demo": [
+      1
     ],
     "future": [
       2,
@@ -408,6 +625,9 @@
       2
     ],
     "remote": [
+      2,
+      2,
+      2,
       2,
       2,
       2,
@@ -420,19 +640,28 @@
     ],
     "async": [
       2,
+      2,
       2
     ],
     "communication": [
       2,
+      2,
       4
     ],
     "intentional": [
+      2,
       2
     ],
     "tooling": [
+      2,
       2
     ],
     "shape": [
+      2,
+      2
+    ],
+    "productivity": [
+      2,
       2
     ],
     "isn": [
@@ -484,16 +713,8 @@
     "focus": [
       2
     ],
-    "time": [
-      2,
-      5
-    ],
     "overcommunicate": [
       2
-    ],
-    "can": [
-      2,
-      3
     ],
     "tap": [
       2
@@ -505,6 +726,53 @@
       2
     ],
     "written": [
+      2
+    ],
+    "becomes": [
+      2
+    ],
+    "superpower": [
+      2
+    ],
+    "docs": [
+      2
+    ],
+    "searchable": [
+      2
+    ],
+    "knowledge": [
+      2
+    ],
+    "bases": [
+      2
+    ],
+    "trust": [
+      2,
+      3
+    ],
+    "output": [
+      2
+    ],
+    "measure": [
+      2
+    ],
+    "results": [
+      2
+    ],
+    "hours": [
+      2
+    ],
+    "online": [
+      2
+    ],
+    "optimize": [
+      2,
+      5
+    ],
+    "outcomes": [
+      2
+    ],
+    "autonomy": [
       2
     ],
     "creating": [
@@ -526,45 +794,43 @@
       3,
       3,
       3,
+      3,
+      3,
       3
     ],
-    "your": [
-      3,
-      3,
-      3,
-      3,
-      5,
-      5,
-      5,
-      5,
-      5,
-      5
-    ],
     "principles": [
+      3,
       3
     ],
     "designing": [
+      3,
       3
     ],
     "interfaces": [
+      3,
       3
     ],
-    "users": [
-      3,
-      3,
-      5
-    ],
     "love": [
+      3,
       3
     ],
     "first": [
+      3,
       3
     ],
     "click": [
+      3,
+      3
+    ],
+    "design": [
+      3,
+      3,
+      3,
       3
     ],
     "great": [
       3,
+      4,
       4
     ],
     "doesn": [
@@ -576,14 +842,7 @@
     "guides": [
       3
     ],
-    "should": [
-      3,
-      3
-    ],
     "understand": [
-      3
-    ],
-    "do": [
       3,
       3
     ],
@@ -600,10 +859,6 @@
     "clarity": [
       3
     ],
-    "over": [
-      3,
-      5
-    ],
     "cleverness": [
       3
     ],
@@ -616,9 +871,6 @@
     "questions": [
       3
     ],
-    "where": [
-      3
-    ],
     "am": [
       3
     ],
@@ -626,12 +878,6 @@
       3
     ],
     "consistency": [
-      3
-    ],
-    "builds": [
-      3
-    ],
-    "trust": [
       3
     ],
     "reuse": [
@@ -646,20 +892,75 @@
     "forms": [
       3
     ],
-    "nav": [
+    "navigation": [
       3
     ],
-    "design": [
+    "behave": [
+      3
+    ],
+    "predictably": [
+      3
+    ],
+    "limited": [
+      3
+    ],
+    "color": [
+      3
+    ],
+    "palette": [
+      3
+    ],
+    "stick": [
+      3
+    ],
+    "type": [
+      3
+    ],
+    "scale": [
+      3
+    ],
+    "label": [
+      3
+    ],
+    "actions": [
+      3
+    ],
+    "verbs": [
+      3
+    ],
+    "test": [
       3,
       3
     ],
-    "our": [
-      4,
-      4,
-      4,
-      4
+    "early": [
+      3
+    ],
+    "often": [
+      3
+    ],
+    "watch": [
+      3
+    ],
+    "complete": [
+      3
+    ],
+    "tasks": [
+      3
+    ],
+    "ll": [
+      3
+    ],
+    "find": [
+      3
+    ],
+    "never": [
+      3
+    ],
+    "imagined": [
+      3
     ],
     "people": [
+      4,
       4,
       4,
       4
@@ -675,24 +976,39 @@
       4
     ],
     "behind": [
+      4,
       4
     ],
     "cares": [
+      4,
       4
     ],
     "deeply": [
-      4
-    ],
-    "about": [
+      4,
       4
     ],
     "problem": [
+      4,
       4
     ],
     "re": [
+      4,
       4
     ],
     "solving": [
+      4,
+      4
+    ],
+    "founders": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "culture": [
+      4,
+      4,
+      4,
       4
     ],
     "company": [
@@ -727,21 +1043,10 @@
       4,
       5
     ],
-    "culture": [
-      4,
-      4
-    ],
-    "as": [
-      4,
-      5
-    ],
     "treat": [
       4
     ],
     "internal": [
-      4
-    ],
-    "same": [
       4
     ],
     "rigor": [
@@ -768,20 +1073,59 @@
     "experiment": [
       4
     ],
-    "ke": [
+    "keep": [
       4
     ],
-    "founders": [
-      4,
+    "us": [
+      4
+    ],
+    "sharp": [
+      4
+    ],
+    "learning": [
+      4
+    ],
+    "public": [
+      4
+    ],
+    "sharing": [
+      4
+    ],
+    "learn": [
+      4
+    ],
+    "successes": [
+      4
+    ],
+    "failures": [
+      4
+    ],
+    "helps": [
+      4
+    ],
+    "broader": [
+      4
+    ],
+    "community": [
+      4
+    ],
+    "attracts": [
+      4
+    ],
+    "think": [
       4
     ],
     "scaling": [
       5,
       5,
       5,
+      5,
+      5,
       5
     ],
     "infrastructure": [
+      5,
+      5,
       5,
       5,
       5
@@ -797,24 +1141,40 @@
       5
     ],
     "cost": [
+      5,
+      5,
       5
     ],
     "effective": [
+      5,
       5
     ],
     "strategies": [
+      5,
       5
     ],
     "growing": [
+      5,
       5
     ],
     "backend": [
+      5,
       5
     ],
     "base": [
+      5,
       5
     ],
     "expands": [
+      5,
+      5
+    ],
+    "engineering": [
+      5,
+      5
+    ],
+    "devops": [
+      5,
       5
     ],
     "growth": [
@@ -844,13 +1204,7 @@
     "knowing": [
       5
     ],
-    "optimize": [
-      5
-    ],
     "leave": [
-      5
-    ],
-    "right": [
       5
     ],
     "size": [
@@ -860,9 +1214,6 @@
       5
     ],
     "engineer": [
-      5
-    ],
-    "start": [
       5
     ],
     "managed": [
@@ -878,9 +1229,6 @@
       5
     ],
     "wastes": [
-      5
-    ],
-    "could": [
       5
     ],
     "spend": [
@@ -904,47 +1252,84 @@
     "latency": [
       5
     ],
-    "engineering": [
-      5,
+    "error": [
+      5
+    ],
+    "rates": [
+      5
+    ],
+    "per": [
+      5
+    ],
+    "active": [
+      5
+    ],
+    "vanity": [
+      5
+    ],
+    "metrics": [
+      5
+    ],
+    "cache": [
+      5
+    ],
+    "aggressively": [
+      5
+    ],
+    "edge": [
+      5
+    ],
+    "autoscaling": [
+      5
+    ],
+    "sane": [
+      5
+    ],
+    "limits": [
+      5
+    ],
+    "review": [
+      5
+    ],
+    "idle": [
+      5
+    ],
+    "resources": [
+      5
+    ],
+    "monthly": [
       5
     ]
   },
   "docLengths": [
-    72,
-    78,
-    63,
-    77,
-    63,
-    75
+    94,
+    148,
+    86,
+    103,
+    81,
+    94
   ],
-  "avgDocLength": 71.33333333333333,
+  "avgDocLength": 101,
   "documentFrequency": {
-    "building": 2,
+    "building": 3,
     "customer": 1,
     "feedback": 1,
     "loop": 1,
-    "that": 4,
     "actually": 2,
     "works": 1,
     "turn": 1,
     "user": 3,
-    "into": 1,
     "product": 3,
     "decisions": 3,
     "structured": 1,
     "repeatable": 1,
     "process": 1,
+    "customers": 1,
     "only": 1,
     "valuable": 1,
-    "when": 3,
-    "it": 3,
     "changes": 1,
-    "what": 3,
-    "you": 3,
     "build": 1,
     "here": 1,
-    "how": 3,
-    "we": 2,
     "close": 1,
     "collect": 1,
     "intent": 1,
@@ -963,14 +1348,30 @@
     "emerge": 1,
     "prioritize": 1,
     "ruthlessly": 1,
-    "not": 3,
-    "every": 4,
+    "every": 5,
     "request": 1,
     "deserves": 1,
     "sprint": 1,
-    "use": 2,
+    "use": 5,
     "impact": 1,
     "effort": 1,
+    "rank": 1,
+    "ideas": 1,
+    "say": 1,
+    "clearly": 1,
+    "publicly": 1,
+    "ship": 1,
+    "something": 1,
+    "users": 3,
+    "asked": 1,
+    "tell": 1,
+    "them": 1,
+    "builds": 2,
+    "loyalty": 1,
+    "encourages": 1,
+    "more": 1,
+    "honest": 1,
+    "input": 1,
     "enhancing": 1,
     "team": 2,
     "collaboration": 1,
@@ -982,19 +1383,20 @@
     "workflows": 1,
     "discover": 1,
     "transforming": 1,
-    "way": 1,
+    "way": 2,
     "teams": 2,
     "collaborate": 1,
     "communicate": 1,
     "workplaces": 1,
+    "category": 2,
+    "workflow": 1,
     "need": 1,
     "tools": 2,
     "adapt": 1,
-    "they": 2,
     "work": 2,
     "other": 1,
     "around": 1,
-    "become": 2,
+    "become": 1,
     "backbone": 1,
     "collaborative": 1,
     "enabling": 1,
@@ -1002,15 +1404,63 @@
     "stay": 1,
     "aligned": 1,
     "without": 3,
-    "friction": 1,
-    "why": 1,
+    "friction": 2,
     "matters": 2,
     "share": 1,
     "context": 2,
     "easily": 1,
     "happen": 1,
     "faster": 1,
-    "category": 2,
+    "right": 2,
+    "stack": 1,
+    "reduces": 1,
+    "email": 1,
+    "overload": 1,
+    "keeps": 1,
+    "everyone": 1,
+    "same": 2,
+    "page": 1,
+    "real": 2,
+    "time": 3,
+    "editing": 1,
+    "eliminates": 1,
+    "version": 1,
+    "confusion": 1,
+    "integrated": 1,
+    "notifications": 1,
+    "surface": 1,
+    "role": 1,
+    "based": 1,
+    "access": 1,
+    "sensitive": 1,
+    "data": 1,
+    "secure": 1,
+    "adoption": 1,
+    "best": 2,
+    "feel": 1,
+    "invisible": 1,
+    "fit": 1,
+    "existing": 1,
+    "habits": 1,
+    "rather": 1,
+    "demanding": 1,
+    "new": 1,
+    "ones": 1,
+    "start": 2,
+    "one": 2,
+    "pain": 1,
+    "point": 1,
+    "solve": 1,
+    "well": 1,
+    "expand": 1,
+    "key": 1,
+    "takeaway": 1,
+    "invest": 2,
+    "day": 1,
+    "shelfware": 1,
+    "looks": 1,
+    "good": 1,
+    "demo": 1,
     "future": 1,
     "remote": 1,
     "mindsets": 1,
@@ -1019,6 +1469,7 @@
     "intentional": 1,
     "tooling": 1,
     "shape": 1,
+    "productivity": 1,
     "isn": 1,
     "just": 1,
     "video": 1,
@@ -1035,64 +1486,90 @@
     "threads": 1,
     "respect": 1,
     "focus": 1,
-    "time": 2,
     "overcommunicate": 1,
-    "can": 2,
     "tap": 1,
     "someone": 1,
     "shoulder": 1,
     "written": 1,
+    "becomes": 1,
+    "superpower": 1,
+    "docs": 1,
+    "searchable": 1,
+    "knowledge": 1,
+    "bases": 1,
+    "trust": 2,
+    "output": 1,
+    "measure": 1,
+    "results": 1,
+    "hours": 1,
+    "online": 1,
+    "optimize": 2,
+    "outcomes": 1,
+    "autonomy": 1,
     "creating": 1,
     "intuitive": 1,
     "interface": 1,
     "ui": 1,
-    "your": 2,
     "principles": 1,
     "designing": 1,
     "interfaces": 1,
-    "users": 2,
     "love": 1,
     "first": 1,
     "click": 1,
+    "design": 1,
     "great": 2,
     "doesn": 1,
     "shout": 1,
     "guides": 1,
-    "should": 1,
     "understand": 1,
-    "do": 1,
     "next": 1,
     "reading": 1,
     "manual": 1,
     "clarity": 1,
-    "over": 2,
     "cleverness": 1,
     "screen": 1,
     "three": 1,
     "questions": 1,
-    "where": 1,
     "am": 1,
     "happens": 1,
     "consistency": 1,
-    "builds": 1,
-    "trust": 1,
     "reuse": 1,
     "across": 1,
     "buttons": 1,
     "forms": 1,
-    "nav": 1,
-    "design": 1,
-    "our": 1,
+    "navigation": 1,
+    "behave": 1,
+    "predictably": 1,
+    "limited": 1,
+    "color": 1,
+    "palette": 1,
+    "stick": 1,
+    "type": 1,
+    "scale": 1,
+    "label": 1,
+    "actions": 1,
+    "verbs": 1,
+    "test": 1,
+    "early": 1,
+    "often": 1,
+    "watch": 1,
+    "complete": 1,
+    "tasks": 1,
+    "ll": 1,
+    "find": 1,
+    "never": 1,
+    "imagined": 1,
     "people": 1,
     "make": 1,
     "difference": 1,
     "behind": 1,
     "cares": 1,
     "deeply": 1,
-    "about": 1,
     "problem": 1,
     "re": 1,
     "solving": 1,
+    "founders": 1,
+    "culture": 1,
     "company": 1,
     "sport": 1,
     "ve": 1,
@@ -1103,11 +1580,8 @@
     "beats": 1,
     "credentials": 1,
     "alone": 2,
-    "culture": 1,
-    "as": 2,
     "treat": 1,
     "internal": 1,
-    "same": 1,
     "rigor": 1,
     "apply": 1,
     "roadmap": 1,
@@ -1116,8 +1590,20 @@
     "transparent": 1,
     "room": 1,
     "experiment": 1,
-    "ke": 1,
-    "founders": 1,
+    "keep": 1,
+    "us": 1,
+    "sharp": 1,
+    "learning": 1,
+    "public": 1,
+    "sharing": 1,
+    "learn": 1,
+    "successes": 1,
+    "failures": 1,
+    "helps": 1,
+    "broader": 1,
+    "community": 1,
+    "attracts": 1,
+    "think": 1,
     "scaling": 1,
     "infrastructure": 1,
     "breaking": 1,
@@ -1129,6 +1615,8 @@
     "backend": 1,
     "base": 1,
     "expands": 1,
+    "engineering": 1,
+    "devops": 1,
     "growth": 1,
     "exciting": 1,
     "until": 1,
@@ -1138,19 +1626,15 @@
     "smart": 1,
     "means": 1,
     "knowing": 1,
-    "optimize": 1,
     "leave": 1,
-    "right": 1,
     "size": 1,
     "before": 1,
     "engineer": 1,
-    "start": 1,
     "managed": 1,
     "services": 1,
     "premature": 1,
     "optimization": 1,
     "wastes": 1,
-    "could": 1,
     "spend": 1,
     "features": 1,
     "want": 1,
@@ -1158,7 +1642,22 @@
     "track": 1,
     "p95": 1,
     "latency": 1,
-    "engineering": 1
+    "error": 1,
+    "rates": 1,
+    "per": 1,
+    "active": 1,
+    "vanity": 1,
+    "metrics": 1,
+    "cache": 1,
+    "aggressively": 1,
+    "edge": 1,
+    "autoscaling": 1,
+    "sane": 1,
+    "limits": 1,
+    "review": 1,
+    "idle": 1,
+    "resources": 1,
+    "monthly": 1
   },
   "totalDocs": 6,
   "documents": [

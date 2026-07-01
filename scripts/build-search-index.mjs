@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import stopWords from "../src/lib/search/stop-words.json" with { type: "json" };
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -8,11 +9,7 @@ const postsDir = path.join(root, "content", "posts");
 const outDir = path.join(root, "public", "search");
 const outFile = path.join(outDir, "index.json");
 
-const STOP_WORDS = new Set([
-  "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for", "of", "with",
-  "by", "from", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had",
-  "이", "그", "저", "의", "가", "을", "를", "에", "에서", "와", "과", "도", "로", "으로",
-]);
+const STOP_WORDS = new Set(stopWords);
 
 function parseFrontmatter(raw) {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
@@ -41,7 +38,22 @@ function stripMarkdown(md) {
 }
 
 function tokenize(text) {
-  return text.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).filter((t) => t.length > 1 && !STOP_WORDS.has(t));
+  return text
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .split(/\s+/)
+    .filter((t) => t.length > 1 && !STOP_WORDS.has(t));
+}
+
+function getIndexFields(doc) {
+  const tags = Array.isArray(doc.tags) ? doc.tags.join(" ") : String(doc.tags || "");
+  return [
+    { text: doc.title, weight: 3 },
+    { text: doc.excerpt, weight: 2 },
+    { text: doc.category, weight: 2 },
+    { text: tags, weight: 2 },
+    { text: doc.body, weight: 1 },
+  ];
 }
 
 function buildIndex(documents) {
@@ -51,12 +63,7 @@ function buildIndex(documents) {
   const termDocSets = {};
 
   documents.forEach((doc, docId) => {
-    const fields = [
-      { text: doc.title, weight: 3 },
-      { text: doc.excerpt, weight: 1 },
-      { text: doc.snippet, weight: 1 },
-      { text: doc.category, weight: 2 },
-    ];
+    const fields = getIndexFields(doc);
     const tokens = [];
     for (const field of fields) {
       const t = tokenize(field.text);
@@ -80,7 +87,8 @@ function buildIndex(documents) {
   }
 
   const avgDocLength = docLengths.length ? docLengths.reduce((a, b) => a + b, 0) / docLengths.length : 0;
-  return { postings, docLengths, avgDocLength, documentFrequency, totalDocs: documents.length, documents };
+  const storedDocuments = documents.map(({ body: _body, tags: _tags, ...doc }) => doc);
+  return { postings, docLengths, avgDocLength, documentFrequency, totalDocs: storedDocuments.length, documents: storedDocuments };
 }
 
 function loadPosts() {
@@ -90,6 +98,7 @@ function loadPosts() {
     const { data, content } = parseFrontmatter(raw);
     const slug = data.slug || filename.replace(/\.md$/, "");
     const plain = stripMarkdown(content);
+    const tags = Array.isArray(data.tags) ? data.tags : data.tags ? [data.tags] : [];
     return {
       id: i,
       slug: String(slug),
@@ -100,6 +109,8 @@ function loadPosts() {
       date: String(data.date || new Date().toISOString().slice(0, 10)),
       readTime: Math.max(1, Math.ceil(plain.split(/\s+/).filter(Boolean).length / 200)),
       snippet: plain.slice(0, 300),
+      body: plain,
+      tags,
     };
   });
 }

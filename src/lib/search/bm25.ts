@@ -1,6 +1,6 @@
 import type { InvertedIndex, SearchResult } from "@/lib/types";
 import { getVocabulary } from "./inverted-index";
-import { findFuzzyTerm, tokenize } from "./tokenizer";
+import { resolveTerm, tokenize } from "./tokenizer";
 
 const K1 = 1.2;
 const B = 0.75;
@@ -16,9 +16,12 @@ export function searchBM25(query: string, index: InvertedIndex, limit = 10): Sea
 
   const vocabulary = getVocabulary(index);
   const scores = new Map<number, number>();
+  const matchedTokenCounts = new Map<number, number>();
 
   for (const rawToken of queryTokens) {
-    const term = findFuzzyTerm(rawToken, vocabulary) ?? rawToken;
+    const term = resolveTerm(rawToken, vocabulary);
+    if (!term) continue;
+
     const postingList = index.postings[term];
     if (!postingList?.length) continue;
 
@@ -30,6 +33,8 @@ export function searchBM25(query: string, index: InvertedIndex, limit = 10): Sea
     }
 
     for (const [docId, tf] of tfMap) {
+      matchedTokenCounts.set(docId, (matchedTokenCounts.get(docId) ?? 0) + 1);
+
       const dl = index.docLengths[docId] ?? 0;
       const denom = tf + K1 * (1 - B + (B * dl) / (index.avgDocLength || 1));
       const score = termIdf * ((tf * (K1 + 1)) / denom);
@@ -37,7 +42,10 @@ export function searchBM25(query: string, index: InvertedIndex, limit = 10): Sea
     }
   }
 
+  const requiredMatches = queryTokens.length;
+
   return [...scores.entries()]
+    .filter(([docId]) => matchedTokenCounts.get(docId) === requiredMatches)
     .sort((a, b) => b[1] - a[1])
     .slice(0, limit)
     .map(([docId, score]) => ({

@@ -190,7 +190,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
                 >
                   <PostListItem
                     post={result}
-                    titleHtml={highlightText(result.title, query)}
+                    titleHtml={highlightText(result.title, query, index)}
                   />
                 </div>
               ))}

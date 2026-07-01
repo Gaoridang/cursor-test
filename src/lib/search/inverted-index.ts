@@ -1,4 +1,5 @@
 import type { InvertedIndex, SearchDocument } from "@/lib/types";
+import { getIndexFields } from "./index-fields";
 import { tokenize } from "./tokenizer";
 
 export function buildInvertedIndex(documents: SearchDocument[]): InvertedIndex {
@@ -8,12 +9,7 @@ export function buildInvertedIndex(documents: SearchDocument[]): InvertedIndex {
   const termDocSets: Record<string, Set<number>> = {};
 
   documents.forEach((doc, docId) => {
-    const fields = [
-      { text: doc.title, weight: 3 },
-      { text: doc.excerpt, weight: 1 },
-      { text: doc.snippet, weight: 1 },
-      { text: doc.category, weight: 2 },
-    ];
+    const fields = getIndexFields(doc);
 
     const tokens: string[] = [];
     for (const field of fields) {

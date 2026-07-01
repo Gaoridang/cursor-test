@@ -1,13 +1,6 @@
-const STOP_WORDS = new Set([
-  "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for", "of", "with",
-  "by", "from", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had",
-  "do", "does", "did", "will", "would", "could", "should", "may", "might", "must",
-  "that", "this", "these", "those", "it", "its", "as", "if", "then", "than", "when",
-  "what", "which", "who", "how", "why", "where", "your", "you", "we", "they", "their",
-  "our", "my", "me", "him", "her", "not", "no", "can", "about", "into", "over", "after",
-  "이", "그", "저", "의", "가", "을", "를", "에", "에서", "와", "과", "도", "로", "으로",
-  "은", "는", "이", "가", "하다", "있다", "되다", "하는", "한다", "합니다",
-]);
+import stopWords from "./stop-words.json";
+
+const STOP_WORDS = new Set(stopWords);
 
 export function tokenize(text: string): string[] {
   return text
@@ -51,4 +44,18 @@ export function findFuzzyTerm(queryToken: string, vocabulary: string[], maxDista
   }
 
   return best;
+}
+
+/** Resolve a query token to an indexed term: exact → prefix → fuzzy. */
+export function resolveTerm(queryToken: string, vocabulary: string[]): string | null {
+  if (vocabulary.includes(queryToken)) return queryToken;
+
+  if (queryToken.length >= 3) {
+    const prefixMatches = vocabulary.filter((t) => t.startsWith(queryToken));
+    if (prefixMatches.length > 0) {
+      return prefixMatches.sort((a, b) => a.length - b.length || a.localeCompare(b))[0];
+    }
+  }
+
+  return findFuzzyTerm(queryToken, vocabulary);
 }
