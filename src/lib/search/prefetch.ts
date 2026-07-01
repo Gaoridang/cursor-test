@@ -1,8 +1,13 @@
 import type { InvertedIndex } from "@/lib/types";
-import { getGaru } from "./garu";
+import { getGaru, isGaruLoaded } from "./garu";
 
 let indexCache: InvertedIndex | null = null;
 let indexPromise: Promise<InvertedIndex> | null = null;
+
+/** 이미 로드된 인덱스 캐시를 동기적으로 반환합니다. */
+export function getCachedSearchIndex(): InvertedIndex | null {
+  return indexCache;
+}
 
 /** 캐시된 검색 인덱스를 반환하거나, 없으면 fetch합니다. */
 export function getSearchIndex(): Promise<InvertedIndex> {
@@ -23,18 +28,21 @@ export function getSearchIndex(): Promise<InvertedIndex> {
   return indexPromise;
 }
 
-/** 페이지 로드 후 idle 시점에 검색 리소스를 미리 불러옵니다. */
+/** 페이지 로드 시 검색 리소스를 즉시 불러옵니다. */
 export function prefetchSearchResources(): void {
   if (typeof window === "undefined") return;
 
-  const run = () => {
-    void getSearchIndex().catch(() => {});
+  void getSearchIndex().catch(() => {});
+
+  if (isGaruLoaded()) return;
+
+  const loadGaru = () => {
     void getGaru().catch(() => {});
   };
 
   if ("requestIdleCallback" in window) {
-    window.requestIdleCallback(run, { timeout: 2000 });
+    window.requestIdleCallback(loadGaru, { timeout: 1000 });
   } else {
-    setTimeout(run, 0);
+    setTimeout(loadGaru, 0);
   }
 }
