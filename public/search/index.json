@@ -1,0 +1,1232 @@
+{
+  "postings": {
+    "building": [
+      0,
+      0,
+      0,
+      4
+    ],
+    "customer": [
+      0,
+      0,
+      0
+    ],
+    "feedback": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "loop": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "that": [
+      0,
+      0,
+      0,
+      1,
+      3,
+      4,
+      4
+    ],
+    "actually": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "works": [
+      0,
+      0,
+      0
+    ],
+    "turn": [
+      0
+    ],
+    "user": [
+      0,
+      3,
+      3,
+      3,
+      5
+    ],
+    "into": [
+      0
+    ],
+    "product": [
+      0,
+      0,
+      0,
+      3,
+      3,
+      3,
+      3,
+      4,
+      4,
+      4
+    ],
+    "decisions": [
+      0,
+      1,
+      2
+    ],
+    "structured": [
+      0
+    ],
+    "repeatable": [
+      0
+    ],
+    "process": [
+      0
+    ],
+    "only": [
+      0
+    ],
+    "valuable": [
+      0
+    ],
+    "when": [
+      0,
+      1,
+      2
+    ],
+    "it": [
+      0,
+      2,
+      3
+    ],
+    "changes": [
+      0
+    ],
+    "what": [
+      0,
+      3,
+      3,
+      3,
+      5,
+      5,
+      5
+    ],
+    "you": [
+      0,
+      2,
+      5,
+      5
+    ],
+    "build": [
+      0
+    ],
+    "here": [
+      0
+    ],
+    "how": [
+      0,
+      1,
+      1,
+      2
+    ],
+    "we": [
+      0,
+      4,
+      4,
+      4
+    ],
+    "close": [
+      0
+    ],
+    "collect": [
+      0
+    ],
+    "intent": [
+      0
+    ],
+    "surveys": [
+      0
+    ],
+    "support": [
+      0
+    ],
+    "tickets": [
+      0
+    ],
+    "sales": [
+      0
+    ],
+    "calls": [
+      0,
+      2
+    ],
+    "all": [
+      0
+    ],
+    "contain": [
+      0
+    ],
+    "signal": [
+      0
+    ],
+    "tag": [
+      0
+    ],
+    "centralize": [
+      0
+    ],
+    "so": [
+      0
+    ],
+    "patterns": [
+      0,
+      3
+    ],
+    "emerge": [
+      0
+    ],
+    "prioritize": [
+      0
+    ],
+    "ruthlessly": [
+      0
+    ],
+    "not": [
+      0,
+      1,
+      2
+    ],
+    "every": [
+      0,
+      2,
+      3,
+      4
+    ],
+    "request": [
+      0
+    ],
+    "deserves": [
+      0
+    ],
+    "sprint": [
+      0
+    ],
+    "use": [
+      0,
+      2
+    ],
+    "impact": [
+      0
+    ],
+    "effort": [
+      0
+    ],
+    "enhancing": [
+      1,
+      1,
+      1
+    ],
+    "team": [
+      1,
+      1,
+      1,
+      4,
+      4
+    ],
+    "collaboration": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "saas": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      3,
+      3,
+      3,
+      5,
+      5,
+      5
+    ],
+    "products": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "game": [
+      1,
+      1,
+      1
+    ],
+    "changer": [
+      1,
+      1,
+      1
+    ],
+    "modern": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "workflows": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "discover": [
+      1
+    ],
+    "transforming": [
+      1
+    ],
+    "way": [
+      1,
+      1
+    ],
+    "teams": [
+      1,
+      1,
+      1,
+      1,
+      2,
+      2
+    ],
+    "collaborate": [
+      1
+    ],
+    "communicate": [
+      1
+    ],
+    "workplaces": [
+      1
+    ],
+    "need": [
+      1
+    ],
+    "tools": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "adapt": [
+      1
+    ],
+    "they": [
+      1,
+      4
+    ],
+    "work": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "other": [
+      1
+    ],
+    "around": [
+      1
+    ],
+    "become": [
+      1,
+      2
+    ],
+    "backbone": [
+      1
+    ],
+    "collaborative": [
+      1
+    ],
+    "enabling": [
+      1
+    ],
+    "distributed": [
+      1,
+      2
+    ],
+    "stay": [
+      1
+    ],
+    "aligned": [
+      1
+    ],
+    "without": [
+      1,
+      3,
+      5,
+      5,
+      5
+    ],
+    "friction": [
+      1
+    ],
+    "why": [
+      1
+    ],
+    "matters": [
+      1,
+      5
+    ],
+    "share": [
+      1
+    ],
+    "context": [
+      1,
+      2,
+      2
+    ],
+    "easily": [
+      1
+    ],
+    "happen": [
+      1
+    ],
+    "faster": [
+      1
+    ],
+    "category": [
+      1,
+      1,
+      2,
+      2
+    ],
+    "future": [
+      2,
+      2,
+      2
+    ],
+    "remote": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "mindsets": [
+      2,
+      2,
+      2
+    ],
+    "async": [
+      2,
+      2
+    ],
+    "communication": [
+      2,
+      4
+    ],
+    "intentional": [
+      2
+    ],
+    "tooling": [
+      2
+    ],
+    "shape": [
+      2
+    ],
+    "isn": [
+      2
+    ],
+    "just": [
+      2
+    ],
+    "video": [
+      2
+    ],
+    "home": [
+      2
+    ],
+    "different": [
+      2
+    ],
+    "operating": [
+      2
+    ],
+    "system": [
+      2
+    ],
+    "default": [
+      2
+    ],
+    "question": [
+      2
+    ],
+    "needs": [
+      2
+    ],
+    "immediate": [
+      2
+    ],
+    "answer": [
+      2,
+      3
+    ],
+    "document": [
+      2
+    ],
+    "threads": [
+      2
+    ],
+    "respect": [
+      2
+    ],
+    "focus": [
+      2
+    ],
+    "time": [
+      2,
+      5
+    ],
+    "overcommunicate": [
+      2
+    ],
+    "can": [
+      2,
+      3
+    ],
+    "tap": [
+      2
+    ],
+    "someone": [
+      2
+    ],
+    "shoulder": [
+      2
+    ],
+    "written": [
+      2
+    ],
+    "creating": [
+      3,
+      3,
+      3
+    ],
+    "intuitive": [
+      3,
+      3,
+      3
+    ],
+    "interface": [
+      3,
+      3,
+      3
+    ],
+    "ui": [
+      3,
+      3,
+      3,
+      3
+    ],
+    "your": [
+      3,
+      3,
+      3,
+      3,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "principles": [
+      3
+    ],
+    "designing": [
+      3
+    ],
+    "interfaces": [
+      3
+    ],
+    "users": [
+      3,
+      3,
+      5
+    ],
+    "love": [
+      3
+    ],
+    "first": [
+      3
+    ],
+    "click": [
+      3
+    ],
+    "great": [
+      3,
+      4
+    ],
+    "doesn": [
+      3
+    ],
+    "shout": [
+      3
+    ],
+    "guides": [
+      3
+    ],
+    "should": [
+      3,
+      3
+    ],
+    "understand": [
+      3
+    ],
+    "do": [
+      3,
+      3
+    ],
+    "next": [
+      3,
+      3
+    ],
+    "reading": [
+      3
+    ],
+    "manual": [
+      3
+    ],
+    "clarity": [
+      3
+    ],
+    "over": [
+      3,
+      5
+    ],
+    "cleverness": [
+      3
+    ],
+    "screen": [
+      3
+    ],
+    "three": [
+      3
+    ],
+    "questions": [
+      3
+    ],
+    "where": [
+      3
+    ],
+    "am": [
+      3
+    ],
+    "happens": [
+      3
+    ],
+    "consistency": [
+      3
+    ],
+    "builds": [
+      3
+    ],
+    "trust": [
+      3
+    ],
+    "reuse": [
+      3
+    ],
+    "across": [
+      3
+    ],
+    "buttons": [
+      3
+    ],
+    "forms": [
+      3
+    ],
+    "nav": [
+      3
+    ],
+    "design": [
+      3,
+      3
+    ],
+    "our": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "people": [
+      4,
+      4,
+      4
+    ],
+    "make": [
+      4,
+      4,
+      4
+    ],
+    "difference": [
+      4,
+      4,
+      4
+    ],
+    "behind": [
+      4
+    ],
+    "cares": [
+      4
+    ],
+    "deeply": [
+      4
+    ],
+    "about": [
+      4
+    ],
+    "problem": [
+      4
+    ],
+    "re": [
+      4
+    ],
+    "solving": [
+      4
+    ],
+    "company": [
+      4
+    ],
+    "sport": [
+      4
+    ],
+    "ve": [
+      4
+    ],
+    "learned": [
+      4
+    ],
+    "hiring": [
+      4,
+      4
+    ],
+    "curiosity": [
+      4
+    ],
+    "empathy": [
+      4
+    ],
+    "beats": [
+      4
+    ],
+    "credentials": [
+      4
+    ],
+    "alone": [
+      4,
+      5
+    ],
+    "culture": [
+      4,
+      4
+    ],
+    "as": [
+      4,
+      5
+    ],
+    "treat": [
+      4
+    ],
+    "internal": [
+      4
+    ],
+    "same": [
+      4
+    ],
+    "rigor": [
+      4
+    ],
+    "apply": [
+      4
+    ],
+    "roadmap": [
+      4
+    ],
+    "regular": [
+      4
+    ],
+    "retrospectives": [
+      4
+    ],
+    "transparent": [
+      4
+    ],
+    "room": [
+      4
+    ],
+    "experiment": [
+      4
+    ],
+    "ke": [
+      4
+    ],
+    "founders": [
+      4,
+      4
+    ],
+    "scaling": [
+      5,
+      5,
+      5,
+      5
+    ],
+    "infrastructure": [
+      5,
+      5,
+      5
+    ],
+    "breaking": [
+      5,
+      5,
+      5
+    ],
+    "bank": [
+      5,
+      5,
+      5
+    ],
+    "cost": [
+      5
+    ],
+    "effective": [
+      5
+    ],
+    "strategies": [
+      5
+    ],
+    "growing": [
+      5
+    ],
+    "backend": [
+      5
+    ],
+    "base": [
+      5
+    ],
+    "expands": [
+      5
+    ],
+    "growth": [
+      5
+    ],
+    "exciting": [
+      5
+    ],
+    "until": [
+      5
+    ],
+    "cloud": [
+      5
+    ],
+    "bill": [
+      5
+    ],
+    "arrives": [
+      5
+    ],
+    "smart": [
+      5
+    ],
+    "means": [
+      5
+    ],
+    "knowing": [
+      5
+    ],
+    "optimize": [
+      5
+    ],
+    "leave": [
+      5
+    ],
+    "right": [
+      5
+    ],
+    "size": [
+      5
+    ],
+    "before": [
+      5
+    ],
+    "engineer": [
+      5
+    ],
+    "start": [
+      5
+    ],
+    "managed": [
+      5
+    ],
+    "services": [
+      5
+    ],
+    "premature": [
+      5
+    ],
+    "optimization": [
+      5
+    ],
+    "wastes": [
+      5
+    ],
+    "could": [
+      5
+    ],
+    "spend": [
+      5
+    ],
+    "features": [
+      5
+    ],
+    "want": [
+      5
+    ],
+    "monitor": [
+      5
+    ],
+    "track": [
+      5
+    ],
+    "p95": [
+      5
+    ],
+    "latency": [
+      5
+    ],
+    "engineering": [
+      5,
+      5
+    ]
+  },
+  "docLengths": [
+    72,
+    78,
+    63,
+    77,
+    63,
+    75
+  ],
+  "avgDocLength": 71.33333333333333,
+  "documentFrequency": {
+    "building": 2,
+    "customer": 1,
+    "feedback": 1,
+    "loop": 1,
+    "that": 4,
+    "actually": 2,
+    "works": 1,
+    "turn": 1,
+    "user": 3,
+    "into": 1,
+    "product": 3,
+    "decisions": 3,
+    "structured": 1,
+    "repeatable": 1,
+    "process": 1,
+    "only": 1,
+    "valuable": 1,
+    "when": 3,
+    "it": 3,
+    "changes": 1,
+    "what": 3,
+    "you": 3,
+    "build": 1,
+    "here": 1,
+    "how": 3,
+    "we": 2,
+    "close": 1,
+    "collect": 1,
+    "intent": 1,
+    "surveys": 1,
+    "support": 1,
+    "tickets": 1,
+    "sales": 1,
+    "calls": 2,
+    "all": 1,
+    "contain": 1,
+    "signal": 1,
+    "tag": 1,
+    "centralize": 1,
+    "so": 1,
+    "patterns": 2,
+    "emerge": 1,
+    "prioritize": 1,
+    "ruthlessly": 1,
+    "not": 3,
+    "every": 4,
+    "request": 1,
+    "deserves": 1,
+    "sprint": 1,
+    "use": 2,
+    "impact": 1,
+    "effort": 1,
+    "enhancing": 1,
+    "team": 2,
+    "collaboration": 1,
+    "saas": 3,
+    "products": 1,
+    "game": 1,
+    "changer": 1,
+    "modern": 1,
+    "workflows": 1,
+    "discover": 1,
+    "transforming": 1,
+    "way": 1,
+    "teams": 2,
+    "collaborate": 1,
+    "communicate": 1,
+    "workplaces": 1,
+    "need": 1,
+    "tools": 2,
+    "adapt": 1,
+    "they": 2,
+    "work": 2,
+    "other": 1,
+    "around": 1,
+    "become": 2,
+    "backbone": 1,
+    "collaborative": 1,
+    "enabling": 1,
+    "distributed": 2,
+    "stay": 1,
+    "aligned": 1,
+    "without": 3,
+    "friction": 1,
+    "why": 1,
+    "matters": 2,
+    "share": 1,
+    "context": 2,
+    "easily": 1,
+    "happen": 1,
+    "faster": 1,
+    "category": 2,
+    "future": 1,
+    "remote": 1,
+    "mindsets": 1,
+    "async": 1,
+    "communication": 2,
+    "intentional": 1,
+    "tooling": 1,
+    "shape": 1,
+    "isn": 1,
+    "just": 1,
+    "video": 1,
+    "home": 1,
+    "different": 1,
+    "operating": 1,
+    "system": 1,
+    "default": 1,
+    "question": 1,
+    "needs": 1,
+    "immediate": 1,
+    "answer": 2,
+    "document": 1,
+    "threads": 1,
+    "respect": 1,
+    "focus": 1,
+    "time": 2,
+    "overcommunicate": 1,
+    "can": 2,
+    "tap": 1,
+    "someone": 1,
+    "shoulder": 1,
+    "written": 1,
+    "creating": 1,
+    "intuitive": 1,
+    "interface": 1,
+    "ui": 1,
+    "your": 2,
+    "principles": 1,
+    "designing": 1,
+    "interfaces": 1,
+    "users": 2,
+    "love": 1,
+    "first": 1,
+    "click": 1,
+    "great": 2,
+    "doesn": 1,
+    "shout": 1,
+    "guides": 1,
+    "should": 1,
+    "understand": 1,
+    "do": 1,
+    "next": 1,
+    "reading": 1,
+    "manual": 1,
+    "clarity": 1,
+    "over": 2,
+    "cleverness": 1,
+    "screen": 1,
+    "three": 1,
+    "questions": 1,
+    "where": 1,
+    "am": 1,
+    "happens": 1,
+    "consistency": 1,
+    "builds": 1,
+    "trust": 1,
+    "reuse": 1,
+    "across": 1,
+    "buttons": 1,
+    "forms": 1,
+    "nav": 1,
+    "design": 1,
+    "our": 1,
+    "people": 1,
+    "make": 1,
+    "difference": 1,
+    "behind": 1,
+    "cares": 1,
+    "deeply": 1,
+    "about": 1,
+    "problem": 1,
+    "re": 1,
+    "solving": 1,
+    "company": 1,
+    "sport": 1,
+    "ve": 1,
+    "learned": 1,
+    "hiring": 1,
+    "curiosity": 1,
+    "empathy": 1,
+    "beats": 1,
+    "credentials": 1,
+    "alone": 2,
+    "culture": 1,
+    "as": 2,
+    "treat": 1,
+    "internal": 1,
+    "same": 1,
+    "rigor": 1,
+    "apply": 1,
+    "roadmap": 1,
+    "regular": 1,
+    "retrospectives": 1,
+    "transparent": 1,
+    "room": 1,
+    "experiment": 1,
+    "ke": 1,
+    "founders": 1,
+    "scaling": 1,
+    "infrastructure": 1,
+    "breaking": 1,
+    "bank": 1,
+    "cost": 1,
+    "effective": 1,
+    "strategies": 1,
+    "growing": 1,
+    "backend": 1,
+    "base": 1,
+    "expands": 1,
+    "growth": 1,
+    "exciting": 1,
+    "until": 1,
+    "cloud": 1,
+    "bill": 1,
+    "arrives": 1,
+    "smart": 1,
+    "means": 1,
+    "knowing": 1,
+    "optimize": 1,
+    "leave": 1,
+    "right": 1,
+    "size": 1,
+    "before": 1,
+    "engineer": 1,
+    "start": 1,
+    "managed": 1,
+    "services": 1,
+    "premature": 1,
+    "optimization": 1,
+    "wastes": 1,
+    "could": 1,
+    "spend": 1,
+    "features": 1,
+    "want": 1,
+    "monitor": 1,
+    "track": 1,
+    "p95": 1,
+    "latency": 1,
+    "engineering": 1
+  },
+  "totalDocs": 6,
+  "documents": [
+    {
+      "id": 0,
+      "slug": "customer-feedback-loop",
+      "title": "Building a Customer Feedback Loop That Actually Works",
+      "excerpt": "Turn user feedback into product decisions with a structured, repeatable process.",
+      "category": "Product",
+      "image": "/images/placeholder.svg",
+      "date": "2024-08-01",
+      "readTime": 1,
+      "snippet": "Feedback is only valuable when it changes what you build. Here's how we close the loop. Collect with intent Surveys, support tickets, and sales calls all contain signal. Tag and centralize feedback so patterns emerge. Prioritize ruthlessly Not every request deserves a sprint. Use impact and effort t"
+    },
+    {
+      "id": 1,
+      "slug": "enhancing-team-collaboration",
+      "title": "Enhancing Team Collaboration with SaaS Products: A Game-Changer for Modern Workflows",
+      "excerpt": "Discover how SaaS products are transforming the way teams collaborate and communicate in modern workplaces.",
+      "category": "Category",
+      "image": "/images/hero-desert.svg",
+      "date": "2024-08-10",
+      "readTime": 1,
+      "snippet": "Modern teams need tools that adapt to how they actually work—not the other way around. SaaS products have become the backbone of collaborative workflows, enabling distributed teams to stay aligned without friction. Why collaboration matters When teams share context easily, decisions happen faster. T"
+    },
+    {
+      "id": 2,
+      "slug": "future-of-remote-work",
+      "title": "The Future of Remote Work: Tools and Mindsets",
+      "excerpt": "How async communication and intentional tooling shape distributed teams.",
+      "category": "Category",
+      "image": "/images/placeholder.svg",
+      "date": "2024-08-03",
+      "readTime": 1,
+      "snippet": "Remote work isn't just video calls from home—it's a different operating system for teams. Async by default Not every question needs an immediate answer. Document decisions, use threads, and respect focus time. Overcommunicate context When you can't tap someone on the shoulder, written context become"
+    },
+    {
+      "id": 3,
+      "slug": "intuitive-ui-for-saas",
+      "title": "Creating an Intuitive User Interface (UI) for Your SaaS Product",
+      "excerpt": "Principles for designing interfaces that users love from the first click.",
+      "category": "Design",
+      "image": "/images/placeholder.svg",
+      "date": "2024-08-08",
+      "readTime": 1,
+      "snippet": "A great UI doesn't shout—it guides. Users should understand what to do next without reading a manual. Clarity over cleverness Every screen should answer three questions: Where am I? What can I do? What happens next? Consistency builds trust Reuse patterns across your product. Buttons, forms, and nav"
+    },
+    {
+      "id": 4,
+      "slug": "our-people-make-the-difference",
+      "title": "Our people make the difference",
+      "excerpt": "Behind every great product is a team that cares deeply about the problem they're solving.",
+      "category": "Founders",
+      "image": "/images/placeholder.svg",
+      "date": "2024-08-07",
+      "readTime": 1,
+      "snippet": "Building a company is a team sport. We've learned that hiring for curiosity and empathy beats hiring for credentials alone. Culture as a product We treat internal culture with the same rigor we apply to our product roadmap. Regular retrospectives, transparent communication, and room to experiment ke"
+    },
+    {
+      "id": 5,
+      "slug": "scaling-saas-infrastructure",
+      "title": "Scaling Your SaaS Infrastructure Without Breaking the Bank",
+      "excerpt": "Cost-effective strategies for growing your backend as your user base expands.",
+      "category": "Engineering",
+      "image": "/images/placeholder.svg",
+      "date": "2024-08-05",
+      "readTime": 1,
+      "snippet": "Growth is exciting until your cloud bill arrives. Smart scaling means knowing what to optimize and what to leave alone. Right size before you over engineer Start with managed services. Premature optimization wastes time you could spend on features users want. Monitor what matters Track p95 latency, "
+    }
+  ]
+}

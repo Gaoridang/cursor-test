@@ -1,0 +1,133 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: none;
+  gap: 32px;
+}
+
+.navLink {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+
+.navLink:hover,
+.navActive {
+  color: var(--color-charcoal);
+}
+
+.navActive {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.login {
+  display: none;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  align-items: center;
+  gap: 4px;
+}
+
+.login:hover {
+  color: var(--color-charcoal);
+}
+
+.searchBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.searchBtn:hover {
+  color: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+}
+
+.kbd {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.menuBtn {
+  display: flex;
+  padding: 8px;
+}
+
+.mobileNav {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 24px 24px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-cream);
+}
+
+.mobileNavOpen {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+
+  .login {
+    display: flex;
+  }
+
+  .menuBtn {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
