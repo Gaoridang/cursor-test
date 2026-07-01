@@ -20,9 +20,13 @@ export function FeaturedPost({ post }: { post: Post }) {
       </div>
       <div className={styles.overlay}>
         <div className={styles.content}>
-          <PostLabels category={post.category} tags={post.tags} />
+          <div className={styles.labels}>
+            <PostLabels category={post.category} tags={post.tags} layout="stacked" />
+          </div>
           <h2 className={styles.title}>{post.title}</h2>
-          <PostMeta date={post.date} readTime={post.readTime} />
+          <div className={styles.meta}>
+            <PostMeta date={post.date} readTime={post.readTime} />
+          </div>
         </div>
       </div>
     </Link>

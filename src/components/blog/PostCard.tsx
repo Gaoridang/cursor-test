@@ -18,10 +18,12 @@ export function PostCard({ post }: { post: Post }) {
         />
       </div>
       <div className={styles.body}>
-        <PostLabels category={post.category} tags={post.tags} />
+        <PostLabels category={post.category} tags={post.tags} layout="stacked" />
         <h3 className={styles.title}>{post.title}</h3>
         <p className={styles.excerpt}>{post.excerpt}</p>
-        <PostMeta date={post.date} readTime={post.readTime} />
+        <footer className={styles.footer}>
+          <PostMeta date={post.date} readTime={post.readTime} />
+        </footer>
       </div>
     </Link>
   );

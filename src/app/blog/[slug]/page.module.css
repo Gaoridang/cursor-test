@@ -20,9 +20,19 @@
   background: linear-gradient(transparent 0%, rgba(250, 248, 245, 0.5) 50%, var(--color-glass) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+.heroContent {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  max-width: 800px;
+}
+
+.heroLabels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
 .title {
@@ -30,7 +40,10 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
-  max-width: 800px;
+}
+
+.heroMeta {
+  margin-top: var(--space-1);
 }
 
 .body {
