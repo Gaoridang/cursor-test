@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "sync:collections": "node scripts/sync-collections.mjs"
+    "sync:collections": "node scripts/sync-collections.mjs",
+    "benchmark:search": "node scripts/build-search-index.mjs && npx tsx scripts/benchmark-search.ts"
   },
   "dependencies": {
     "next": "^15.3.3",
