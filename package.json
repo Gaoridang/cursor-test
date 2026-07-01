@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "node scripts/build-search-index.mjs && next dev",
+    "dev": "npx tsx scripts/build-search-index.ts && next dev",
     "prebuild": "node scripts/vercel-build.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "sync:collections": "node scripts/sync-collections.mjs",
-    "benchmark:search": "node scripts/build-search-index.mjs && npx tsx scripts/benchmark-search.ts"
+    "benchmark:search": "npx tsx scripts/build-search-index.ts && npx tsx scripts/benchmark-search.ts"
   },
   "dependencies": {
+    "garu-ko": "^0.9.7",
     "next": "^15.3.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
@@ -22,6 +23,7 @@
     "@types/react-dom": "^19.1.5",
     "eslint": "^9.27.0",
     "eslint-config-next": "^15.3.3",
+    "tsx": "^4.22.4",
     "typescript": "^5.8.3"
   }
 }

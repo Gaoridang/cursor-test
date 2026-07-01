@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-01T05:40:07.078Z",
-  "phase": "latest",
+  "generatedAt": "2026-07-01T05:41:33.252Z",
+  "phase": "phase2",
   "indexMetrics": {
     "version": 2,
     "totalDocs": 6,
@@ -19,8 +19,8 @@
   },
   "latency": {
     "meanMs": 0.69,
-    "p50Ms": 0.22,
-    "p95Ms": 4.06
+    "p50Ms": 0.24,
+    "p95Ms": 4.87
   },
   "cases": [
     {
@@ -37,7 +37,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 4.06,
+      "latencyMs": 5.13,
       "notes": "제목·태그 핵심 키워드"
     },
     {
@@ -54,7 +54,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.6,
+      "latencyMs": 0.73,
       "notes": "복합 키워드 AND 매칭"
     },
     {
@@ -71,7 +71,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.29,
+      "latencyMs": 0.33,
       "notes": "태그 필드 매칭"
     },
     {
@@ -88,7 +88,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.31,
+      "latencyMs": 0.3,
       "notes": "제목 핵심 구문"
     },
     {
@@ -105,7 +105,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.16,
+      "latencyMs": 0.15,
       "notes": "단일 키워드"
     },
     {
@@ -122,7 +122,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.32,
+      "latencyMs": 2.02,
       "notes": "본문 후반부 단어 — 색인 깊이 테스트"
     },
     {
@@ -142,7 +142,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.22,
+      "latencyMs": 0.32,
       "notes": "카테고리·태그 매칭"
     },
     {
@@ -159,7 +159,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.21,
+      "latencyMs": 0.24,
       "notes": "바이그램/접두사 매칭"
     },
     {
@@ -177,7 +177,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.88,
+      "latencyMs": 0.31,
       "notes": "태그·제목 매칭"
     },
     {
@@ -194,7 +194,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.47,
+      "latencyMs": 0.36,
       "notes": "영문 태그"
     },
     {
@@ -211,7 +211,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.28,
+      "latencyMs": 0.24,
       "notes": "본문 키워드"
     },
     {
@@ -228,7 +228,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.33,
+      "latencyMs": 0.29,
       "notes": "카테고리 필드"
     },
     {
@@ -245,7 +245,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.1,
+      "latencyMs": 0.08,
       "notes": "영문 약어"
     },
     {
@@ -262,7 +262,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.19,
+      "latencyMs": 0.16,
       "notes": "카테고리·태그"
     },
     {
@@ -279,7 +279,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.26,
+      "latencyMs": 0.29,
       "notes": "제목 키워드"
     },
     {
@@ -296,7 +296,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.2,
+      "latencyMs": 0.22,
       "notes": "제목 핵심 구문"
     },
     {
@@ -347,7 +347,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.17,
+      "latencyMs": 0.15,
       "notes": "태그 매칭"
     },
     {
@@ -364,7 +364,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.15,
+      "latencyMs": 0.13,
       "notes": "카테고리·태그"
     },
     {
@@ -381,7 +381,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.12,
+      "latencyMs": 0.15,
       "notes": "태그·본문"
     },
     {
@@ -402,7 +402,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.09,
+      "latencyMs": 0.08,
       "notes": "여러 글에 걸친 영문 태그"
     },
     {
@@ -419,7 +419,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.21,
+      "latencyMs": 0.2,
       "notes": "띄어쓰기 없는 복합어 — baseline 실패 예상"
     },
     {
@@ -436,7 +436,7 @@
       "mrr": 1,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 0.24,
+      "latencyMs": 0.23,
       "notes": "조사 붙은 어절 — baseline 실패 예상"
     },
     {
@@ -449,7 +449,7 @@
       "mrr": 0,
       "recall5": 1,
       "hit": true,
-      "latencyMs": 7.13,
+      "latencyMs": 4.87,
       "notes": "관련 글 없음 — 빈 결과 기대"
     }
   ]

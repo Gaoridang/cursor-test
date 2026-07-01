@@ -1,8 +1,10 @@
 import { readFileSync, writeFileSync, mkdirSync, statSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { searchBM25 } from "../src/lib/search/bm25";
+import { searchBM25WithGaru } from "../src/lib/search/bm25";
+import { getGaru } from "../src/lib/search/garu";
 import type { InvertedIndex } from "../src/lib/types";
+import type { GaruAnalyzer } from "../src/lib/search/garu";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -71,18 +73,26 @@ function percentile(values: number[], p: number): number {
 
 function measureIndexMetrics(index: InvertedIndex) {
   const stats = statSync(indexPath);
-  const vocabulary = Object.keys(index.postings);
+  const isV2 = index.version === 2;
+  const morphVocab = isV2 ? Object.keys(index.morph.postings).length : Object.keys(index.postings).length;
+  const ngramVocab = isV2 ? Object.keys(index.ngram.postings).length : 0;
+  const avgDocLength = isV2
+    ? Math.round(index.morph.avgDocLength * 10) / 10
+    : Math.round(index.avgDocLength * 10) / 10;
 
   return {
+    version: isV2 ? 2 : 1,
     totalDocs: index.totalDocs,
-    vocabularySize: vocabulary.length,
-    avgDocLength: Math.round(index.avgDocLength * 10) / 10,
+    vocabularySize: morphVocab + ngramVocab,
+    morphVocabularySize: morphVocab,
+    ngramVocabularySize: ngramVocab,
+    avgDocLength,
     indexFileSizeKB: Math.round(stats.size / 1024),
     indexFileSizeBytes: stats.size,
   };
 }
 
-function runBenchmark(index: InvertedIndex, golden: GoldenSet) {
+function runBenchmark(index: InvertedIndex, golden: GoldenSet, garu: GaruAnalyzer) {
   const caseResults: CaseResult[] = [];
   const latencies: number[] = [];
 
@@ -90,7 +100,7 @@ function runBenchmark(index: InvertedIndex, golden: GoldenSet) {
     const relevant = new Set(testCase.relevant);
 
     const start = performance.now();
-    const results = searchBM25(testCase.query, index, 10);
+    const results = searchBM25WithGaru(testCase.query, index, garu, 10);
     const latencyMs = performance.now() - start;
     latencies.push(latencyMs);
 
@@ -140,9 +150,10 @@ function printReport(
   console.log("\n=== 검색 벤치마크 ===\n");
 
   console.log("[인덱스 메트릭]");
+  console.log(`  인덱스 버전:    v${indexMetrics.version}`);
   console.log(`  문서 수:        ${indexMetrics.totalDocs}`);
-  console.log(`  어휘 수:        ${indexMetrics.vocabularySize}`);
-  console.log(`  평균 문서 길이: ${indexMetrics.avgDocLength} 토큰`);
+  console.log(`  어휘 수:        ${indexMetrics.vocabularySize} (morph ${indexMetrics.morphVocabularySize} + ngram ${indexMetrics.ngramVocabularySize})`);
+  console.log(`  평균 morph 길이: ${indexMetrics.avgDocLength} 토큰`);
   console.log(`  인덱스 크기:    ${indexMetrics.indexFileSizeKB} KB`);
 
   console.log("\n[집계 메트릭] (Golden Set 25건)");
@@ -179,12 +190,13 @@ function printReport(
   console.log("");
 }
 
-function main() {
+async function main() {
   const index = JSON.parse(readFileSync(indexPath, "utf8")) as InvertedIndex;
   const golden = JSON.parse(readFileSync(goldenPath, "utf8")) as GoldenSet;
+  const garu = await getGaru();
 
   const indexMetrics = measureIndexMetrics(index);
-  const { caseResults, macro, latency } = runBenchmark(index, golden);
+  const { caseResults, macro, latency } = runBenchmark(index, golden, garu);
 
   const timestamp = new Date().toISOString();
   const phase = process.env.BENCHMARK_PHASE ?? "latest";
@@ -205,4 +217,7 @@ function main() {
   console.log(`리포트 저장: ${reportPath}\n`);
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

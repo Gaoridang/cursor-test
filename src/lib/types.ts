@@ -34,11 +34,35 @@ export interface SearchResult extends SearchDocument {
 
 export type SearchMode = "all" | "keyword" | "semantic";
 
-export interface InvertedIndex {
+export interface IndexField {
+  postings: Record<string, number[]>;
+  docLengths: number[];
+  avgDocLength: number;
+  documentFrequency: Record<string, number>;
+}
+
+export interface InvertedIndexV2 {
+  version: 2;
+  morph: IndexField;
+  ngram: IndexField;
+  totalDocs: number;
+  documents: SearchDocument[];
+}
+
+/** @deprecated v1 단일 필드 — 하위 호환용 */
+export interface InvertedIndexV1 {
+  version?: 1;
   postings: Record<string, number[]>;
   docLengths: number[];
   avgDocLength: number;
   documentFrequency: Record<string, number>;
   totalDocs: number;
   documents: SearchDocument[];
+}
+
+export type InvertedIndex = InvertedIndexV2 | InvertedIndexV1;
+
+export interface QueryTokens {
+  morph: string[];
+  ngram: string[];
 }

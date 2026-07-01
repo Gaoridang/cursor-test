@@ -3,10 +3,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PostListItem } from "@/components/blog/LatestPosts";
-import { searchBM25 } from "@/lib/search/bm25";
+import { searchBM25WithGaru } from "@/lib/search/bm25";
+import { getGaru } from "@/lib/search/garu";
 import { searchGrok } from "@/lib/search/grok";
 import { mergeSearchResults } from "@/lib/search/hybrid";
 import { highlightText } from "@/lib/search/highlight";
+import type { GaruAnalyzer } from "@/lib/search/garu";
 import type { InvertedIndex, SearchMode, SearchResult } from "@/lib/types";
 import styles from "./SearchModal.module.css";
 
@@ -30,19 +32,30 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [index, setIndex] = useState<InvertedIndex | null>(null);
+  const [garu, setGaru] = useState<GaruAnalyzer | null>(null);
+  const [garuLoading, setGaruLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (!open) return;
     inputRef.current?.focus();
+
     if (!index) {
       fetch("/search/index.json")
         .then((r) => r.json())
         .then(setIndex)
         .catch(() => setError("검색 인덱스를 불러오지 못했습니다"));
     }
-  }, [open, index]);
+
+    if (!garu && !garuLoading) {
+      setGaruLoading(true);
+      getGaru()
+        .then(setGaru)
+        .catch(() => setError("한국어 분석기를 불러오지 못했습니다"))
+        .finally(() => setGaruLoading(false));
+    }
+  }, [open, index, garu, garuLoading]);
 
   useEffect(() => {
     if (!open) return;
@@ -84,10 +97,14 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
 
       setError(null);
 
+      const runBm25 = () => {
+        if (!index || !garu) return [];
+        return searchBM25WithGaru(q, index, garu);
+      };
+
       if (searchMode === "keyword") {
-        if (!index) return;
-        const bm25 = searchBM25(q, index);
-        setResults(bm25);
+        if (!index || !garu) return;
+        setResults(runBm25());
         return;
       }
 
@@ -97,7 +114,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
           const grok = await searchGrok(q, "semantic");
           setResults(grok);
         } else {
-          const bm25 = index ? searchBM25(q, index) : [];
+          const bm25 = runBm25();
           try {
             const grok = await searchGrok(q, "hybrid");
             setResults(mergeSearchResults(bm25, grok));
@@ -107,8 +124,9 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
           }
         }
       } catch {
-        if (index) {
-          setResults(searchBM25(q, index));
+        const bm25 = runBm25();
+        if (bm25.length) {
+          setResults(bm25);
           setError("시맨틱 검색을 사용할 수 없습니다 — 키워드 결과를 표시합니다");
         } else {
           setError("검색을 사용할 수 없습니다");
@@ -117,11 +135,13 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
         setLoading(false);
       }
     },
-    [index]
+    [index, garu]
   );
 
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
+
+    if (!index || !garu) return;
 
     if (mode === "keyword") {
       runSearch(query, mode);
@@ -132,9 +152,11 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
-  }, [query, mode, runSearch]);
+  }, [query, mode, runSearch, index, garu]);
 
   if (!open) return null;
+
+  const isInitializing = !index || garuLoading || !garu;
 
   return (
     <div className={styles.overlay} onClick={onClose} role="presentation">
@@ -177,9 +199,9 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
         </div>
 
         <div className={styles.results}>
-          {loading && <div className={styles.spinner} aria-label="불러오는 중" />}
+          {(loading || isInitializing) && <div className={styles.spinner} aria-label="불러오는 중" />}
           {error && <p className={styles.error}>{error}</p>}
-          {!loading && !results.length && query && !error && (
+          {!loading && !isInitializing && !results.length && query && !error && (
             <p className={styles.empty}>&ldquo;{query}&rdquo;에 대한 결과가 없습니다</p>
           )}
           {!loading && results.length > 0 && (
