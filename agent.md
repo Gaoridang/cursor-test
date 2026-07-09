@@ -581,16 +581,35 @@ The system already fills the middle. **Do not** put `Spacer()` inside a top-bar 
 
 ## iOS 26: ToolbarSpacer + Liquid Glass grouping
 
+**Yes — when two (or more) actions share the same side and should look like separate glass capsules, you use `ToolbarSpacer`.**
+
+WWDC25 Landmarks example: favorite + add-to-collection stay related; share / inspector are split into their own groups with `ToolbarSpacer(.fixed)`.
+
 ```swift
 .toolbar {
-    ToolbarItem { ShareLink(item: url) }
-    ToolbarSpacer(.fixed)                 // gap + separate glass groups
-    ToolbarItem { FavoriteButton() }
-    ToolbarItem { CollectionsButton() }   // related → stay grouped
-    ToolbarSpacer(.fixed)
-    ToolbarItem { InspectorToggle() }
-}
+    // Group A — related editing tools (one shared glass capsule)
+    ToolbarItemGroup(placement: .topBarTrailing) {
+        Button("Draw", systemImage: "pencil") { }
+        Button("Erase", systemImage: "eraser") { }
+    }
 
+    ToolbarSpacer(.fixed, placement: .topBarTrailing) // ← splits glass groups
+
+    // Group B — primary action (its own glass capsule)
+    ToolbarItem(placement: .topBarTrailing) {
+        Button("Save", systemImage: "checkmark") { }
+    }
+}
+```
+
+| Situation | Need Spacer? |
+| --- | --- |
+| One button leading, one trailing | **No** — different placements already separate them |
+| Two unrelated buttons both trailing | **Yes (iOS 26)** — `ToolbarSpacer(.fixed)` |
+| Two related buttons both trailing | **No spacer between them** — use `ToolbarItemGroup` so they share one glass |
+| Push Filter ←→ Compose on bottom bar | **Yes** — `ToolbarSpacer(.flexible)` |
+
+```swift
 // Bottom bar: push to opposite edges
 ToolbarItem(placement: .bottomBar) { Button("Filter") { } }
 ToolbarSpacer(.flexible, placement: .bottomBar)
@@ -605,11 +624,50 @@ ToolbarItem(placement: .topBarLeading) {
 
 | Tool | Role |
 | --- | --- |
-| `ToolbarSpacer(.fixed)` | Separate unrelated actions / glass chips |
+| `ToolbarSpacer(.fixed)` | Separate unrelated actions into distinct Liquid Glass groups |
 | `ToolbarSpacer(.flexible)` | Expand like Spacer in one placement lane |
 | `.sharedBackgroundVisibility(.hidden)` | No glass background on that item |
 
 Availability: **iOS 26+**. Guard with `#available` if supporting older OS.
+
+### ToolbarSpacer ≠ Morph animation
+
+These are easy to confuse because both involve Liquid Glass:
+
+| Concept | What it does | API |
+| --- | --- | --- |
+| **Toolbar grouping / spacer** | Split or join **toolbar button glass capsules** at rest | `ToolbarSpacer`, `ToolbarItemGroup` |
+| **Glass morph** | Fluidly **merge/split shapes during animation** (custom glass views) | `GlassEffectContainer` + `glassEffectID` + `Namespace` |
+| **Presentation morph** | Sheet / dialog **grows out of** the button that presented it | `matchedTransitionSource` + `navigationTransition(.zoom)` (sheets); dialogs often automatic |
+
+So:
+
+- Splitting two header action buttons → **`ToolbarSpacer(.fixed)`** (grouping).
+- Animating custom badges/controls that blob into each other → **`glassEffectID` morph**.
+- Opening a sheet that expands from a toolbar button → **zoom / matched transition**, not `ToolbarSpacer`.
+
+Morph sketch (custom views, not toolbar spacer):
+
+```swift
+@Namespace private var namespace
+@State private var isExpanded = false
+
+GlassEffectContainer {
+    HStack(spacing: 40) {
+        Image(systemName: "scribble.variable")
+            .frame(width: 80, height: 80)
+            .glassEffect()
+            .glassEffectID("pencil", in: namespace)
+
+        if isExpanded {
+            Image(systemName: "eraser.fill")
+                .frame(width: 80, height: 80)
+                .glassEffect()
+                .glassEffectID("eraser", in: namespace)
+        }
+    }
+}
+```
 
 ## Custom HStack header vs system toolbar
 
